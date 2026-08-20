@@ -10,6 +10,8 @@ import {
   UsersThree,
 } from "@phosphor-icons/react/dist/ssr";
 import { MobileMenu } from "./components/mobile-menu";
+import { AnimationController } from "./components/animation-controller";
+import { SiteNav } from "./components/site-nav";
 
 const capabilities = [
   { index: "01", title: "Engineering\nSolutions", icon: GearSix },
@@ -30,6 +32,7 @@ const stats = [
 export default function Home() {
   return (
     <main>
+      <AnimationController />
       <section className="hero" id="home">
         <Image
           src="/images/rock-oil-hero.jpg"
@@ -47,25 +50,17 @@ export default function Home() {
             <span>ROCK OIL</span>
             <i />
           </a>
-          <nav className="desktopNav" aria-label="Primary navigation">
-            <a href="#solutions">Solutions</a>
-            <a href="#capabilities">Capabilities</a>
-            <a href="#projects">Projects</a>
-            <a href="#about">About</a>
-            <a href="#insights">Insights</a>
-            <a href="#careers">Careers</a>
-            <a href="#contact">Contact</a>
-          </nav>
+          <SiteNav />
           <MobileMenu />
         </header>
 
         <div className="heroContent">
           <p className="eyebrow">Engineering the future of asset integrity</p>
           <h1>
-            <span>Beyond</span>
-            <span>Engineering.</span>
-            <span className="muted">Better</span>
-            <span className="muted">Energy</span>
+            <span className="heroTitleLine"><span>Beyond</span></span>
+            <span className="heroTitleLine"><span>Engineering.</span></span>
+            <span className="heroTitleLine muted"><span>Better</span></span>
+            <span className="heroTitleLine muted"><span>Energy</span></span>
           </h1>
           <div className="introBlock">
             <i />
@@ -112,7 +107,7 @@ export default function Home() {
         <div className="statsGrid">
           {stats.map((stat) => (
             <div className="stat" key={stat.value}>
-              <strong>{stat.value}</strong>
+              <strong data-count={stat.value.replace("+", "")}>{stat.value}</strong>
               <span>{stat.label.split("\n").map((line) => <span key={line}>{line}</span>)}</span>
             </div>
           ))}
