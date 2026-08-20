@@ -100,9 +100,15 @@ export function AnimationController() {
     };
     closing?.addEventListener("pointermove", onClosingMove);
 
+    const header = document.querySelector<HTMLElement>(".siteHeader");
+    const updateHeader = () => header?.classList.toggle("isScrolled", window.scrollY > 48);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+
     return () => {
       hero?.removeEventListener("pointermove", onMove);
       closing?.removeEventListener("pointermove", onClosingMove);
+      window.removeEventListener("scroll", updateHeader);
       context.revert();
     };
   }, []);

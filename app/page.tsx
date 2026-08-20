@@ -22,14 +22,17 @@ export default function Home() {
     <main>
       <AnimationController />
       <section className="hero" id="home">
-        <Image
-          src="/images/rock-oil-hero.jpg"
-          alt="Offshore platform and subsea inspection robot operating above an underwater pipeline"
-          fill
-          priority
-          sizes="100vw"
-          className="heroImage"
-        />
+        <picture className="heroPicture">
+          <source media="(max-width: 620px)" srcSet="/images/rock-oil-hero-mobile.webp" />
+          <Image
+            src="/images/rock-oil-hero.jpg"
+            alt="Offshore platform and subsea inspection robot operating above an underwater pipeline"
+            fill
+            priority
+            sizes="100vw"
+            className="heroImage"
+          />
+        </picture>
         <div className="heroShade" />
         <div className="techGrid" aria-hidden="true" />
         <div className="cinematicFx" aria-hidden="true">
@@ -41,10 +44,10 @@ export default function Home() {
         <header className="siteHeader">
           <a className="brand" href="#home" aria-label="Rock Oil home">
             <Image
-              src="/images/ROG-LOGO-800X360PX-WHITE.png"
+              src="/images/ROCG-HEADER-LOGO.svg"
               alt="Rock Oil Group"
-              width={800}
-              height={360}
+              width={1687}
+              height={407}
               priority
               className="brandLogo"
             />
@@ -98,13 +101,16 @@ export default function Home() {
       </section>
 
       <section className="closing" id="contact">
-        <Image
-          src="/images/closing-pipeline.webp"
-          alt="Subsea pipeline carrying connected asset intelligence"
-          fill
-          sizes="100vw"
-          className="closingImage"
-        />
+        <picture className="closingPicture">
+          <source media="(max-width: 620px)" srcSet="/images/closing-pipeline-mobile.webp" />
+          <Image
+            src="/images/closing-pipeline.webp"
+            alt="Subsea pipeline carrying connected asset intelligence"
+            fill
+            sizes="100vw"
+            className="closingImage"
+          />
+        </picture>
         <div className="closingShade" aria-hidden="true" />
         <div className="closingGrid" aria-hidden="true" />
         <div className="closingGlow" aria-hidden="true" />
@@ -137,10 +143,10 @@ export default function Home() {
         <div className="footerBrand">
           <a href="#home" aria-label="Rock Oil home">
             <Image
-              src="/images/ROG-LOGO-800X360PX-WHITE.png"
+              src="/images/ROCG-FOOTER-LOGO.svg"
               alt="Rock Oil Consulting Group"
-              width={800}
-              height={360}
+              width={1395}
+              height={1399}
               className="footerLogo"
             />
           </a>
