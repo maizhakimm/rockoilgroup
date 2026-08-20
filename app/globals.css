@@ -169,8 +169,15 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .closingGlow:before,.closingGlow:after { content:""; position:absolute; border:1px solid rgba(103,221,231,.07); border-radius:50%; }
 .closingGlow:before { inset:45px; }
 .closingGlow:after { inset:110px; }
+.closingParticles,.closingParticles:before,.closingParticles:after { position:absolute; inset:0; z-index:-1; content:""; pointer-events:none; background-repeat:repeat; will-change:transform; }
+.closingParticles { opacity:.46; background-image:radial-gradient(circle,rgba(178,244,248,.85) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(103,221,231,.6) 0 1px,transparent 1.7px); background-size:130px 110px,190px 165px; background-position:12px 35px,75px 90px; mask-image:linear-gradient(90deg,transparent 23%,#000 48%,#000); animation:planktonRise 18s linear infinite; }
+.closingParticles:before { opacity:.45; background-image:radial-gradient(circle,rgba(255,255,255,.8) 0 .7px,transparent 1.3px),radial-gradient(circle,rgba(103,221,231,.65) 0 1.2px,transparent 2px); background-size:90px 135px,240px 205px; background-position:45px 15px,130px 75px; animation:planktonDrift 25s linear infinite; }
+.closingParticles:after { opacity:.32; background-image:radial-gradient(circle,rgba(205,252,255,.8) 0 1.4px,transparent 2.3px); background-size:285px 250px; background-position:170px 130px; animation:planktonNear 14s ease-in-out infinite alternate; filter:blur(.25px); }
 @keyframes closingScan { from { transform:translateX(-65vw) rotate(28deg); } to { transform:translateX(55vw) rotate(28deg); } }
 @keyframes closingPulse { 50% { transform:scale(1.08); opacity:.55; } }
+@keyframes planktonRise { from { transform:translate3d(0,8%,0); } to { transform:translate3d(22px,-12%,0); } }
+@keyframes planktonDrift { from { transform:translate3d(18px,12%,0); } to { transform:translate3d(-30px,-16%,0); } }
+@keyframes planktonNear { to { transform:translate3d(28px,-35px,0) scale(1.025); opacity:.55; } }
 .closingLead { position:relative; z-index:1; }
 .closing h2 { text-transform:uppercase; font-size:clamp(54px,5.8vw,92px); line-height:.86; letter-spacing:-.065em; margin:20px 0 30px; max-width:920px; }
 .closing h2 span { display:block; white-space:nowrap; }
@@ -182,16 +189,16 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .textLink:hover { color:#fff; border-color:var(--red); }
 .textLink:hover svg { transform:translate(4px,4px); color:var(--red); }
 .operationSequence { position:relative; z-index:1; border:1px solid rgba(255,255,255,.15); background:rgba(5,18,23,.54); backdrop-filter:blur(8px); padding:22px 24px 18px; box-shadow:0 30px 80px rgba(0,0,0,.22); }
-.sequenceHeader,.sequenceStatus { display:flex; align-items:center; justify-content:space-between; text-transform:uppercase; font-size:7px; letter-spacing:.14em; color:rgba(255,255,255,.44); }
+.sequenceHeader,.sequenceStatus { display:flex; align-items:center; justify-content:space-between; text-transform:uppercase; font-size:9px; letter-spacing:.13em; color:rgba(255,255,255,.55); }
 .sequenceHeader span { display:flex; align-items:center; gap:8px; }
-.sequenceHeader span i { width:5px; height:5px; border-radius:50%; background:#67dde7; box-shadow:0 0 10px #67dde7; animation:statusBlink 1.8s ease-in-out infinite; }
-.sequenceHeader button { padding:0; border:0; color:#67dde7; background:transparent; font-size:7px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; }
+.sequenceHeader span i { width:6px; height:6px; border-radius:50%; background:var(--red); box-shadow:0 0 10px rgba(225,32,44,.9); animation:statusBlink 1.8s ease-in-out infinite; }
+.sequenceHeader button { padding:3px 0; border:0; color:var(--red); background:transparent; font-size:9px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; cursor:pointer; }
 .sequenceHeader button:hover,.sequenceHeader button:focus-visible { color:#fff; outline:none; }
 .sequenceTrack { height:1px; margin:18px 0 5px; background:rgba(255,255,255,.11); overflow:hidden; }
-.sequenceProgress { display:block; height:1px; background:linear-gradient(90deg,var(--red),#67dde7,#fff); box-shadow:0 0 9px #67dde7; transition:width .6s cubic-bezier(.2,.8,.2,1); }
+.sequenceProgress { display:block; height:1px; background:linear-gradient(90deg,#67dde7,var(--red),#fff); box-shadow:0 0 9px rgba(225,32,44,.7); transition:width .6s cubic-bezier(.2,.8,.2,1); }
 .sequenceStep { width:100%; min-height:68px; padding:0; display:grid; grid-template-columns:38px 1fr 8px; gap:14px; align-items:center; text-align:left; border:0; border-bottom:1px solid rgba(255,255,255,.09); color:rgba(255,255,255,.42); background:transparent; cursor:pointer; transition:min-height .45s,background .4s,color .35s,padding .45s; position:relative; overflow:hidden; }
-.sequenceStep:before { content:""; position:absolute; left:0; top:0; bottom:0; width:1px; background:#67dde7; transform:scaleY(0); transition:transform .35s; box-shadow:0 0 10px #67dde7; }
-.sequenceStep > span { font-size:8px; letter-spacing:.12em; color:inherit; }
+.sequenceStep:before { content:""; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--red); transform:scaleY(0); transition:transform .35s; box-shadow:0 0 10px rgba(225,32,44,.85); }
+.sequenceStep > span:first-child { font-size:13px; font-weight:600; letter-spacing:.08em; color:inherit; }
 .sequenceStep strong { display:block; text-transform:uppercase; font-size:16px; letter-spacing:.01em; color:inherit; transition:color .3s; }
 .sequenceStepCopy { display:block; }
 .sequenceStep small { display:block; max-height:0; opacity:0; overflow:hidden; margin-top:0; font-size:8px; line-height:1.45; color:rgba(255,255,255,.58); transform:translateY(5px); transition:max-height .4s,opacity .35s,transform .4s,margin .4s; }
@@ -199,9 +206,9 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .sequenceStep:hover,.sequenceStep:focus-visible { color:rgba(255,255,255,.72); outline:none; }
 .sequenceStep.isActive { min-height:90px; padding-left:12px; color:#fff; background:linear-gradient(90deg,rgba(103,221,231,.09),transparent); }
 .sequenceStep.isActive:before { transform:scaleY(1); }
-.sequenceStep.isActive > span { color:var(--red); }
+.sequenceStep.isActive > span:first-child { color:#67dde7; text-shadow:0 0 12px rgba(103,221,231,.45); }
 .sequenceStep.isActive small { max-height:28px; opacity:1; transform:translateY(0); margin-top:6px; }
-.sequenceStep.isActive > i { color:#67dde7; background:#67dde7; box-shadow:0 0 12px #67dde7; transform:scale(1.2); }
+.sequenceStep.isActive > i { color:var(--red); background:var(--red); box-shadow:0 0 12px rgba(225,32,44,.9); transform:scale(1.2); }
 .sequenceStatus { padding-top:16px; }
 .sequenceStatus span:last-child { color:rgba(255,255,255,.7); }
 @keyframes statusBlink { 50% { opacity:.28; } }
@@ -300,4 +307,4 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
   .footerContact a { font-size:11px; }
   .footerBottom { grid-template-columns:1fr; gap:10px; margin-top:15px; }
 }
-@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } .scanSignal,.scanPacket { display:none; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } .scanSignal,.scanPacket,.closingParticles { display:none; } }

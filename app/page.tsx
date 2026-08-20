@@ -108,6 +108,7 @@ export default function Home() {
         <div className="closingShade" aria-hidden="true" />
         <div className="closingGrid" aria-hidden="true" />
         <div className="closingGlow" aria-hidden="true" />
+        <div className="closingParticles" aria-hidden="true" />
 
         <div className="closingLead">
           <p className="eyebrow">System ready · Built for what comes next</p>
