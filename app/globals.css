@@ -186,7 +186,7 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
 .expertiseIntro h2 { margin:13px 0 0; white-space:nowrap; font-size:clamp(54px,6.2vw,92px); line-height:.88; letter-spacing:-.07em; text-transform:uppercase; }
 .expertiseIntro .eyebrow { color:rgba(7,17,22,.55); }
 .expertiseIntro > p { max-width:510px; margin:0 0 5px auto; color:rgba(7,17,22,.58); font-size:14px; line-height:1.7; }
-.expertiseStack { max-width:1380px; margin:0 auto; padding-bottom:8vh; }
+.expertiseStack { max-width:1380px; margin:0 auto; padding-bottom:max(8vh,calc(100svh - 620px)); }
 .expertiseCard { --card-top:calc(78px + var(--expertise-offset,0px)); position:sticky; top:var(--card-top); min-height:510px; margin-bottom:14vh; display:grid; grid-template-columns:1.08fr .92fr; overflow:hidden; color:#fff; border:1px solid rgba(255,255,255,.22); border-radius:0 48px 0 0; background:#0b1b21; box-shadow:0 16px 36px rgba(7,17,22,.14); isolation:isolate; }
 .expertiseCard:last-child { margin-bottom:0; }
 .expertiseCardCopy { padding:58px clamp(32px,4.5vw,74px) 50px; display:flex; flex-direction:column; position:relative; z-index:2; }
@@ -422,7 +422,7 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
   .expertiseIntro { margin-bottom:50px; padding:0 7px; }
   .expertiseIntro h2 { white-space:normal; font-size:clamp(44px,13.5vw,58px); }
   .expertiseIntro > p { font-size:12px; }
-  .expertiseStack { padding-bottom:3vh; }
+  .expertiseStack { padding-bottom:max(8vh,calc(100svh - 790px)); }
   .expertiseCard { --card-top:calc(66px + var(--expertise-mobile-offset,0px)); min-height:640px; margin-bottom:12vh; grid-template-rows:1fr 205px; border-radius:0 42px 0 0; }
   .expertiseCardCopy { padding:32px 25px 28px; }
   .expertiseCardMeta { padding-bottom:16px; }
