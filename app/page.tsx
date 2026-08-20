@@ -1,26 +1,11 @@
 import Image from "next/image";
 import {
   ArrowDownRight,
-  ArrowRight,
-  Buildings,
-  Cpu,
-  GearSix,
-  Handshake,
-  ShieldCheck,
-  UsersThree,
 } from "@phosphor-icons/react/dist/ssr";
 import { MobileMenu } from "./components/mobile-menu";
 import { AnimationController } from "./components/animation-controller";
 import { SiteNav } from "./components/site-nav";
-
-const capabilities = [
-  { index: "01", title: "Engineering\nSolutions", icon: GearSix },
-  { index: "02", title: "Autonomy &\nRobotics", icon: Cpu },
-  { index: "03", title: "Asset\nIntegrity", icon: ShieldCheck },
-  { index: "04", title: "Digital\nIntegration", icon: Buildings },
-  { index: "05", title: "Talent &\nSkills", icon: UsersThree },
-  { index: "06", title: "Technology\nPartnerships", icon: Handshake },
-];
+import { CapabilitiesSection } from "./components/capabilities-section";
 
 const stats = [
   { value: "20+", label: "Years of\nexperience" },
@@ -89,23 +74,7 @@ export default function Home() {
         <div className="scrollCue"><span>Scroll</span><i /></div>
       </section>
 
-      <section className="capabilities" id="capabilities">
-        <div className="sectionLead">
-          <p className="eyebrow">What we do</p>
-          <h2>Integrated solutions.<br />Measurable impact.</h2>
-          <a href="#solutions">View all solutions <ArrowRight size={14} /></a>
-        </div>
-        <div className="capabilityGrid">
-          {capabilities.map(({ index, title, icon: Icon }) => (
-            <a href="#contact" className="capabilityCard" key={index}>
-              <span className="cardIndex">{index}</span>
-              <Icon size={39} weight="thin" />
-              <h3>{title.split("\n").map((line) => <span key={line}>{line}</span>)}</h3>
-              <ArrowDownRight className="cardArrow" size={18} weight="light" />
-            </a>
-          ))}
-        </div>
-      </section>
+      <CapabilitiesSection />
 
       <section className="impact" id="about">
         <div className="verticalLabel">Our impact</div>
