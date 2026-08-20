@@ -19,8 +19,7 @@ button { font:inherit; }
 @keyframes waterDrift { to { transform:translateX(70px) translateY(5px); } }
 @keyframes particleRise { to { background-position:35px -95px,95px -60px,145px -160px; } }
 .siteHeader { height:86px; padding:0 clamp(28px,5.3vw,88px); display:flex; align-items:center; border-bottom:1px solid var(--line); position:fixed; top:0; left:0; right:0; z-index:1000; background:linear-gradient(180deg,rgba(2,10,14,.38),transparent); backdrop-filter:blur(2px); transition:top .35s,left .35s,right .35s,height .35s,padding .35s,border-radius .35s,background .35s,box-shadow .35s,border-color .35s,opacity .3s,transform .35s,visibility .3s; }
-.siteHeader.isScrolled { top:14px; left:clamp(16px,3vw,46px); right:clamp(16px,3vw,46px); height:66px; padding:0 25px; border:1px solid rgba(255,255,255,.2); border-radius:999px; background:rgba(4,15,20,.82); box-shadow:0 16px 45px rgba(0,0,0,.3); backdrop-filter:blur(18px) saturate(125%); }
-.siteHeader.isPastHero { opacity:0 !important; visibility:hidden; transform:translateY(-120%) !important; pointer-events:none; }
+.siteHeader.isScrolled { top:0; left:0; right:0; height:68px; padding:0 clamp(28px,5.3vw,88px); border:0; border-bottom:1px solid rgba(255,255,255,.2); border-radius:0; background:rgba(4,15,20,.9); box-shadow:0 12px 35px rgba(0,0,0,.24); backdrop-filter:blur(18px) saturate(125%); }
 .brand { display:flex; align-items:center; width:190px; height:72px; }
 .brandLogo { width:176px; height:auto; display:block; object-fit:contain; }
 .desktopNav { margin-left:auto; flex:1; display:flex; justify-content:flex-end; gap:clamp(20px,2.7vw,47px); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; }
@@ -138,9 +137,9 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 9s ease-in-out infin
 .cardScan { position:absolute; z-index:1; left:0; right:0; height:1px; top:-5%; opacity:0; background:linear-gradient(90deg,transparent,rgba(103,221,231,.9),transparent); box-shadow:0 0 12px rgba(103,221,231,.55); }
 .capabilityCard.isActive .cardScan { opacity:.7; animation:cardScan 2.8s linear infinite; }
 @keyframes cardScan { from { top:0; } to { top:100%; } }
-.impact { background:var(--paper); color:#091116; min-height:305px; padding:56px clamp(28px,5.3vw,88px); display:grid; grid-template-columns:70px 4fr 3fr; gap:0; position:relative; }
+.impact { background:var(--paper); color:#091116; height:305px; padding:0 clamp(28px,5.3vw,88px); display:grid; grid-template-columns:70px 4fr 3fr; align-items:stretch; gap:0; position:relative; }
 .verticalLabel { border-right:1px solid rgba(7,16,20,.15); padding-right:20px; }
-.statsGrid { height:178px; display:grid; grid-template-columns:repeat(4,1fr); align-items:stretch; }
+.statsGrid { height:100%; display:grid; grid-template-columns:repeat(4,1fr); align-items:stretch; }
 .stat { border-right:1px solid rgba(7,16,20,.14); padding:28px 20px; align-self:stretch; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; transition:background .4s,transform .4s,color .35s; }
 .stat:before { content:""; position:absolute; inset:auto 0 0; height:2px; background:linear-gradient(90deg,var(--red),#2bc4d0); transform:scaleX(0); transform-origin:left; transition:transform .4s; }
 .stat:after { content:""; position:absolute; width:100px; height:100px; right:-55px; top:-55px; border-radius:50%; background:rgba(43,196,208,.12); filter:blur(14px); opacity:0; transition:.4s; }
@@ -152,20 +151,20 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 9s ease-in-out infin
 .stat:hover:before { transform:scaleX(1); }
 .stat:hover:after { opacity:1; }
 .stat:hover strong { color:var(--red); transform:translateY(-3px) scale(1.06); transform-origin:left; }
-.presence { position:relative; min-width:0; }
-.countryPresence { display:block; min-width:0; }
-.countryGrid { height:178px; display:grid; grid-template-columns:repeat(3,1fr); }
-.countryCard { min-width:0; height:178px; border-left:1px solid rgba(7,16,20,.14); padding:14px 12px; display:flex; flex-direction:column; position:relative; overflow:hidden; transition:color .4s,background .4s,transform .4s; }
+.presence { position:relative; min-width:0; height:100%; }
+.countryPresence { display:block; min-width:0; height:100%; }
+.countryGrid { height:100%; display:grid; grid-template-columns:repeat(3,1fr); }
+.countryCard { min-width:0; height:100%; border-left:1px solid rgba(7,16,20,.14); padding:0 12px; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; transition:color .4s,background .4s,transform .4s; }
 .countryCard:last-child { border-right:1px solid rgba(7,16,20,.14); }
 .countryCard:before { content:""; position:absolute; inset:0; background:linear-gradient(145deg,#0a1519,#0b2a30); transform:translateY(102%); transition:transform .45s cubic-bezier(.2,.8,.2,1); z-index:-1; }
 .flagIcon { width:30px; height:20px; border-radius:2px; overflow:hidden; box-shadow:0 3px 10px rgba(7,16,20,.14); transition:transform .4s,box-shadow .4s; }
 .flagIcon svg { width:100%; height:100%; display:block; }
-.countryIndex { position:absolute; right:11px; top:13px; color:rgba(7,16,20,.25); font-size:8px; letter-spacing:.08em; transition:color .35s; }
-.countryCard > i { position:absolute; right:12px; top:31px; width:5px; height:5px; border-radius:50%; background:#e1202c; animation:countryBlink 3s ease-in-out infinite; }
+.countryIndex { position:absolute; right:11px; top:calc(50% - 42px); color:rgba(7,16,20,.25); font-size:8px; letter-spacing:.08em; transition:color .35s; }
+.countryCard > i { position:absolute; right:12px; top:calc(50% - 24px); width:5px; height:5px; border-radius:50%; background:#e1202c; animation:countryBlink 3s ease-in-out infinite; }
 .countryCard:nth-child(2) > i { animation-delay:1s; }
 .countryCard:nth-child(3) > i { animation-delay:2s; }
 @keyframes countryBlink { 0%,30%,100% { opacity:.25; transform:scale(.7); } 10%,18% { opacity:1; transform:scale(1.25); box-shadow:0 0 7px rgba(225,32,44,.6); } }
-.countryCard > strong { margin-top:auto; text-transform:uppercase; font-size:10px; line-height:1.1; transition:transform .4s,color .35s,margin .4s; }
+.countryCard > strong { margin-top:22px; text-transform:uppercase; font-size:10px; line-height:1.1; transition:transform .4s,color .35s,margin .4s; }
 .countryOffice { margin-top:6px; padding-right:15px; color:#697276; font-size:8px; line-height:1.45; text-transform:uppercase; transition:color .35s,transform .4s; }
 .countryAddress { max-height:0; opacity:0; overflow:hidden; margin-top:0; padding-right:14px; color:rgba(255,255,255,.68); font-size:8px; line-height:1.5; text-transform:none; transition:max-height .4s,opacity .35s,margin .4s; }
 .countryCard > svg { position:absolute; right:10px; bottom:12px; transition:transform .35s,color .35s; }
@@ -277,7 +276,7 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 9s ease-in-out infin
   .capabilityGrid.hasActive .capabilityCard:not(.isActive),.capabilityCard:hover,.capabilityCard.isActive { opacity:1; }
   .capabilityCard.isActive .cardIndex { font-size:34px; }
   .capabilityCard.isActive h3 { font-size:17px; }
-  .impact { grid-template-columns:45px 1fr; gap:35px; }
+  .impact { height:auto; min-height:305px; padding-top:46px; padding-bottom:46px; grid-template-columns:45px 1fr; gap:35px; }
   .presence { grid-column:2; min-height:180px; }
 }
 @media (max-width:900px) {
@@ -319,7 +318,7 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 9s ease-in-out infin
 @media (max-width:620px) {
   .hero { min-height:1060px; height:max(100svh,1060px); }
   .siteHeader { height:68px; padding:0 18px; }
-  .siteHeader.isScrolled { top:10px; left:12px; right:12px; height:58px; padding:0 16px; }
+  .siteHeader.isScrolled { top:0; left:0; right:0; height:62px; padding:0 18px; border-radius:0; }
   .brand { width:auto; height:60px; }
   .brandLogo { width:150px; }
   .mobileMenu button { width:46px; }
@@ -358,7 +357,9 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 9s ease-in-out infin
   .stat:nth-child(3) { padding-left:0; }
   .stat strong { font-size:34px; }
   .countryGrid { height:auto; grid-template-columns:1fr; }
-  .countryCard { height:156px; border-right:1px solid rgba(7,16,20,.14); }
+  .countryCard { height:156px; padding:22px 20px 18px; border-right:1px solid rgba(7,16,20,.14); }
+  .countryIndex { top:21px; right:20px; }
+  .countryCard > i { top:40px; right:21px; }
   .countryOffice { font-size:9px; }
   .countryAddress { max-height:55px; opacity:1; margin-top:7px; color:#697276; font-size:9px; line-height:1.5; }
   .closing { min-height:1120px; padding:92px 20px 95px; gap:70px; align-content:start; }

@@ -103,8 +103,6 @@ export function AnimationController() {
     const header = document.querySelector<HTMLElement>(".siteHeader");
     const updateHeader = () => {
       header?.classList.toggle("isScrolled", window.scrollY > 48);
-      const heroBottom = hero?.getBoundingClientRect().bottom ?? 0;
-      header?.classList.toggle("isPastHero", heroBottom <= 30);
     };
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
