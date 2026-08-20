@@ -97,11 +97,54 @@ export default function Home() {
       </section>
 
       <section className="closing" id="contact">
-        <p className="eyebrow">Built for what comes next</p>
-        <h2>Progress below<br />the surface.</h2>
-        <a className="outlineButton light" href="mailto:enquiries@rockoilgroup.com.my">
-          Start a conversation <ArrowDownRight size={18} />
-        </a>
+        <div className="closingGrid" aria-hidden="true" />
+        <div className="closingGlow" aria-hidden="true" />
+
+        <div className="closingLead">
+          <p className="eyebrow">System ready · Built for what comes next</p>
+          <h2>Engineered for<br />what comes next.</h2>
+          <p className="closingCopy">
+            Advanced engineering, asset integrity and intelligent technology for complex
+            energy infrastructure.
+          </p>
+          <div className="closingActions">
+            <a className="outlineButton light" href="mailto:enquiries@rockoilgroup.com.my">
+              Start a conversation <ArrowDownRight size={18} />
+            </a>
+            <a className="textLink" href="#capabilities">
+              Explore our capabilities <ArrowDownRight size={15} />
+            </a>
+          </div>
+        </div>
+
+        <div className="operationSequence" aria-label="Rock Oil delivery sequence">
+          <div className="sequenceHeader">
+            <span><i /> Operational sequence</span>
+            <small>Active</small>
+          </div>
+          <div className="sequenceTrack" aria-hidden="true">
+            <i className="sequenceProgress" />
+          </div>
+          {[
+            ["01", "Assess", "Define the asset and operational challenge"],
+            ["02", "Engineer", "Design the right technical response"],
+            ["03", "Inspect", "Capture accurate condition intelligence"],
+            ["04", "Optimise", "Turn insight into lasting performance"],
+          ].map(([number, title, copy], index) => (
+            <div className={`sequenceStep sequenceStep--${index + 1}`} key={number}>
+              <span>{number}</span>
+              <div>
+                <strong>{title}</strong>
+                <p>{copy}</p>
+              </div>
+              <i aria-hidden="true" />
+            </div>
+          ))}
+          <div className="sequenceStatus">
+            <span>Integrated delivery protocol</span>
+            <span>Continuous cycle</span>
+          </div>
+        </div>
       </section>
     </main>
   );
