@@ -51,7 +51,7 @@ export function ExpertiseSection() {
       <div className="expertiseIntro">
         <div>
           <p className="eyebrow">Integrated subsea capability</p>
-          <h2>Our<br />expertise.</h2>
+          <h2>Our expertise.</h2>
         </div>
         <p>
           Discover how our integrated services address complex subsea inspection,
