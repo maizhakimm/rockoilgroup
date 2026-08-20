@@ -1,46 +1,42 @@
 import {
   ArrowDownRight,
-  GraduationCap,
-  HardHat,
-  PipeWrench,
-  Scan,
-  ShieldCheck,
 } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 
 const expertise = [
   {
     title: "EPRS & IRM Solution",
     eyebrow: "Emergency · Repair · Maintenance",
     description: "Integrated subsea inspection, repair and maintenance support for critical offshore infrastructure.",
-    Icon: PipeWrench,
+    image: "/expertise/eprs-irm.webp",
     tone: "red",
   },
   {
     title: "Offshore Survey & Inspection Services",
     eyebrow: "Survey · Detection · Intelligence",
     description: "Offshore survey and inspection services that turn field data into clear, actionable asset insight.",
-    Icon: Scan,
+    image: "/expertise/offshore-survey.webp",
     tone: "cyan",
   },
   {
     title: "Asset Integrity Solutions",
     eyebrow: "Assurance · Reliability · Lifecycle",
     description: "Inspection-led integrity solutions designed to support safer, more reliable asset performance.",
-    Icon: ShieldCheck,
+    image: "/expertise/asset-integrity.webp",
     tone: "steel",
   },
   {
     title: "Subsea & Decommissioning Engineering",
     eyebrow: "Engineering · Execution · Closure",
     description: "Engineering support for complex subsea works and responsible decommissioning programmes.",
-    Icon: HardHat,
+    image: "/expertise/decommissioning.webp",
     tone: "ocean",
   },
   {
     title: "Trainings and Courses",
     eyebrow: "Capability · Competency · People",
     description: "Industry-focused training that strengthens technical competency, operational readiness and safety culture.",
-    Icon: GraduationCap,
+    image: "/expertise/training.webp",
     tone: "light",
   },
 ] as const;
@@ -60,7 +56,7 @@ export function ExpertiseSection() {
       </div>
 
       <div className="expertiseStack">
-        {expertise.map(({ title, eyebrow, description, Icon, tone }, index) => (
+        {expertise.map(({ title, eyebrow, description, image, tone }, index) => (
           <article
             className={`expertiseCard expertiseCard--${tone}`}
             key={title}
@@ -78,8 +74,15 @@ export function ExpertiseSection() {
               </a>
             </div>
             <div className="expertiseVisual" aria-hidden="true">
-              <div className="expertiseOrbit"><i /><i /><i /></div>
-              <Icon weight="thin" />
+              <Image
+                className="expertisePhoto"
+                src={image}
+                alt=""
+                fill
+                sizes="(max-width: 900px) 100vw, 46vw"
+              />
+              <div className="expertisePhotoShade" />
+              <div className="expertiseReticle"><i /><i /><i /></div>
               <span>ROCG / CAPABILITY 0{index + 1}</span>
             </div>
             <div className="expertiseScan" aria-hidden="true" />

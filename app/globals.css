@@ -181,13 +181,13 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
 .countryCard:hover > svg,.countryCard.isActive > svg,.countryCard:focus-visible > svg { color:#e1202c; transform:translate(3px,3px) scale(1.15); }
 .expertise { position:relative; padding:108px clamp(28px,5.3vw,88px) 190px; color:#071116; background:radial-gradient(circle at 82% 8%,rgba(0,124,143,.09),transparent 27%),#ecebe7; isolation:isolate; }
 .expertise:before { content:""; position:absolute; inset:0; z-index:-1; opacity:.3; pointer-events:none; background-image:linear-gradient(rgba(7,17,22,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(7,17,22,.045) 1px,transparent 1px); background-size:84px 84px; mask-image:linear-gradient(to bottom,#000,transparent 67%); }
-.expertise:after { content:""; position:absolute; z-index:-1; left:0; right:0; bottom:0; height:150px; pointer-events:none; background:linear-gradient(to bottom,transparent,#081216); }
+.expertise:after { content:""; position:absolute; left:clamp(28px,5.3vw,88px); right:clamp(28px,5.3vw,88px); bottom:0; height:1px; pointer-events:none; background:linear-gradient(90deg,var(--red),rgba(103,221,231,.75),transparent); }
 .expertiseIntro { max-width:1380px; margin:0 auto 80px; display:grid; grid-template-columns:1fr .75fr; gap:70px; align-items:end; }
 .expertiseIntro h2 { margin:13px 0 0; white-space:nowrap; font-size:clamp(54px,6.2vw,92px); line-height:.88; letter-spacing:-.07em; text-transform:uppercase; }
 .expertiseIntro .eyebrow { color:rgba(7,17,22,.55); }
 .expertiseIntro > p { max-width:510px; margin:0 0 5px auto; color:rgba(7,17,22,.58); font-size:14px; line-height:1.7; }
 .expertiseStack { max-width:1380px; margin:0 auto; padding-bottom:8vh; }
-.expertiseCard { --card-top:calc(78px + (var(--expertise-index) * 18px)); position:sticky; top:var(--card-top); min-height:510px; margin-bottom:14vh; display:grid; grid-template-columns:1.08fr .92fr; overflow:hidden; border:1px solid rgba(255,255,255,.22); border-radius:0 66px 0 0; background:#0b1b21; box-shadow:0 -12px 42px rgba(0,0,0,.28),0 35px 75px rgba(0,0,0,.35); isolation:isolate; }
+.expertiseCard { --card-top:calc(78px + (var(--expertise-index) * 18px)); position:sticky; top:var(--card-top); min-height:510px; margin-bottom:14vh; display:grid; grid-template-columns:1.08fr .92fr; overflow:hidden; color:#fff; border:1px solid rgba(255,255,255,.22); border-radius:0 48px 0 0; background:#0b1b21; box-shadow:0 16px 36px rgba(7,17,22,.14); isolation:isolate; }
 .expertiseCard:last-child { margin-bottom:0; }
 .expertiseCardCopy { padding:58px clamp(32px,4.5vw,74px) 50px; display:flex; flex-direction:column; position:relative; z-index:2; }
 .expertiseCardMeta { display:flex; justify-content:space-between; gap:25px; padding-bottom:22px; border-bottom:1px solid currentColor; color:rgba(255,255,255,.55); font-size:9px; letter-spacing:.14em; text-transform:uppercase; }
@@ -198,18 +198,19 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
 .expertiseCardCopy > a svg { transition:transform .35s; }
 .expertiseCardCopy > a:hover { color:#fff; }
 .expertiseCardCopy > a:hover svg { transform:translate(6px,6px); }
-.expertiseVisual { min-width:0; display:grid; place-items:center; position:relative; overflow:hidden; border-left:1px solid rgba(255,255,255,.18); background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(0,0,0,.14)); }
-.expertiseVisual > svg { width:min(44%,260px); height:auto; position:relative; z-index:2; transition:transform .65s cubic-bezier(.2,.8,.2,1),filter .5s; filter:drop-shadow(0 0 24px rgba(103,221,231,.12)); }
-.expertiseCard:hover .expertiseVisual > svg { transform:scale(1.1) rotate(-4deg); filter:drop-shadow(0 0 36px rgba(103,221,231,.35)); }
-.expertiseVisual > span { position:absolute; right:25px; bottom:21px; color:rgba(255,255,255,.35); font-size:8px; letter-spacing:.14em; }
-.expertiseOrbit { position:absolute; width:min(70%,380px); aspect-ratio:1; border:1px solid rgba(255,255,255,.12); border-radius:50%; animation:expertiseRotate 18s linear infinite; }
-.expertiseOrbit:before,.expertiseOrbit:after { content:""; position:absolute; border:1px solid rgba(255,255,255,.09); border-radius:50%; }
-.expertiseOrbit:before { inset:15%; }
-.expertiseOrbit:after { inset:34%; }
-.expertiseOrbit i { position:absolute; width:7px; height:7px; border-radius:50%; background:#67dde7; box-shadow:0 0 13px #67dde7; }
-.expertiseOrbit i:nth-child(1) { top:14%; left:18%; }
-.expertiseOrbit i:nth-child(2) { right:4%; top:53%; }
-.expertiseOrbit i:nth-child(3) { bottom:3%; left:43%; background:var(--red); box-shadow:0 0 13px var(--red); }
+.expertiseVisual { min-width:0; display:grid; place-items:center; position:relative; overflow:hidden; border-left:1px solid rgba(255,255,255,.18); background:#071116; }
+.expertisePhoto { object-fit:cover; object-position:center; transition:transform 1.1s cubic-bezier(.2,.8,.2,1),filter .8s; }
+.expertiseCard:hover .expertisePhoto { transform:scale(1.055); filter:saturate(1.08) contrast(1.04); }
+.expertisePhotoShade { position:absolute; inset:0; z-index:1; background:linear-gradient(90deg,rgba(4,15,20,.38),transparent 42%),linear-gradient(0deg,rgba(4,15,20,.55),transparent 42%); }
+.expertiseVisual > span { position:absolute; z-index:3; right:25px; bottom:21px; color:rgba(255,255,255,.7); font-size:8px; letter-spacing:.14em; text-shadow:0 1px 7px #000; }
+.expertiseReticle { position:absolute; z-index:2; width:min(40%,210px); aspect-ratio:1; opacity:.65; border:1px solid rgba(255,255,255,.24); border-radius:50%; animation:expertiseRotate 18s linear infinite; }
+.expertiseReticle:before,.expertiseReticle:after { content:""; position:absolute; border:1px solid rgba(103,221,231,.22); border-radius:50%; }
+.expertiseReticle:before { inset:18%; }
+.expertiseReticle:after { inset:38%; }
+.expertiseReticle i { position:absolute; width:6px; height:6px; border-radius:50%; background:#67dde7; box-shadow:0 0 13px #67dde7; }
+.expertiseReticle i:nth-child(1) { top:14%; left:18%; }
+.expertiseReticle i:nth-child(2) { right:4%; top:53%; }
+.expertiseReticle i:nth-child(3) { bottom:3%; left:43%; background:var(--red); box-shadow:0 0 13px var(--red); }
 .expertiseScan { position:absolute; z-index:3; left:0; right:0; height:1px; top:-2%; opacity:.42; pointer-events:none; background:linear-gradient(90deg,transparent,#67dde7 48%,transparent); box-shadow:0 0 15px rgba(103,221,231,.7); animation:expertiseScan 5.5s linear infinite; }
 .expertiseCard--red { background:linear-gradient(135deg,#290e13,#8e1721); }
 .expertiseCard--cyan { background:linear-gradient(135deg,#06252d,#006f80); }
@@ -218,9 +219,7 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
 .expertiseCard--light { color:#071116; border-color:rgba(7,17,22,.18); background:#ecebe7; }
 .expertiseCard--light .expertiseCardMeta,.expertiseCard--light .expertiseCardCopy > p,.expertiseCard--light .expertiseCardCopy > a { color:rgba(7,17,22,.62); }
 .expertiseCard--light .expertiseCardMeta span:first-child { color:#071116; }
-.expertiseCard--light .expertiseVisual { border-color:rgba(7,17,22,.15); background:rgba(7,17,22,.035); }
-.expertiseCard--light .expertiseOrbit,.expertiseCard--light .expertiseOrbit:before,.expertiseCard--light .expertiseOrbit:after { border-color:rgba(7,17,22,.12); }
-.expertiseCard--light .expertiseVisual > span { color:rgba(7,17,22,.42); }
+.expertiseCard--light .expertiseVisual { border-color:rgba(7,17,22,.15); background:#071116; }
 @keyframes expertiseRotate { to { transform:rotate(360deg); } }
 @keyframes expertiseScan { to { top:102%; } }
 .closing { min-height:640px; scroll-margin-top:68px; padding:105px clamp(28px,5.3vw,88px) 110px; background:radial-gradient(circle at 75% 45%,rgba(0,111,126,.12),transparent 30%),#081216; position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr); gap:clamp(60px,9vw,150px); align-items:center; isolation:isolate; }
