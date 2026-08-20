@@ -107,10 +107,24 @@ export function AnimationController() {
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
 
+    // Browsers can resolve an anchor before responsive CSS/images finish
+    // laying out the page, leaving the viewport inside the closing artwork.
+    const alignHashTarget = () => {
+      if (window.location.hash !== "#contact") return;
+      window.requestAnimationFrame(() => {
+        document.querySelector<HTMLElement>("#contact")?.scrollIntoView({ block: "start" });
+      });
+    };
+    alignHashTarget();
+    window.addEventListener("load", alignHashTarget);
+    window.addEventListener("hashchange", alignHashTarget);
+
     return () => {
       hero?.removeEventListener("pointermove", onMove);
       closing?.removeEventListener("pointermove", onClosingMove);
       window.removeEventListener("scroll", updateHeader);
+      window.removeEventListener("load", alignHashTarget);
+      window.removeEventListener("hashchange", alignHashTarget);
       context.revert();
     };
   }, []);
