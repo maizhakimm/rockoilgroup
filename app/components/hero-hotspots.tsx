@@ -12,7 +12,7 @@ const hotspots = [
     detail: "Structural assurance and lifecycle intelligence for critical offshore assets.",
     target: "#service-03",
     imagePoint: { x: 1470, y: 320 },
-    mobilePoint: { x: 700, y: 500 },
+    mobilePoint: { x: 590, y: 600 },
   },
   {
     id: "pipeline",
@@ -22,7 +22,7 @@ const hotspots = [
     detail: "Inspection-led engineering designed to protect subsea infrastructure.",
     target: "#service-01",
     imagePoint: { x: 1080, y: 820 },
-    mobilePoint: { x: 330, y: 1260 },
+    mobilePoint: { x: 335, y: 1300 },
   },
   {
     id: "rov",
@@ -32,7 +32,7 @@ const hotspots = [
     detail: "Intelligent subsea inspection with greater reach and lower operational risk.",
     target: "#service-02",
     imagePoint: { x: 1435, y: 688 },
-    mobilePoint: { x: 655, y: 955 },
+    mobilePoint: { x: 585, y: 1010 },
   },
 ];
 
@@ -58,7 +58,7 @@ export function HeroHotspots() {
       const renderedHeight = sourceHeight * scale;
       const horizontalPosition = 0.5;
       const offsetX = (width - renderedWidth) * horizontalPosition;
-      const offsetY = (height - renderedHeight) * 0.5 + (mobile ? 170 : 0);
+      const offsetY = (height - renderedHeight) * 0.5;
 
       setPositions(hotspots.map(({ imagePoint, mobilePoint }) => ({
         left: offsetX + (mobile ? mobilePoint.x : imagePoint.x) * scale,

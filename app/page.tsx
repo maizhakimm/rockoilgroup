@@ -10,6 +10,7 @@ import { HeroHotspots } from "./components/hero-hotspots";
 import { CountryPresence } from "./components/country-presence";
 import { OperationalSequence } from "./components/operational-sequence";
 import { BackToTop } from "./components/back-to-top";
+import { ContactModal } from "./components/contact-modal";
 
 const stats = [
   { value: "20+", label: "Years of\nexperience" },
@@ -22,9 +23,23 @@ export default function Home() {
   return (
     <main>
       <AnimationController />
+      <header className="siteHeader">
+        <a className="brand" href="#home" aria-label="Rock Oil home">
+          <Image
+            src="/images/ROCG-HEADER-LOGO.svg"
+            alt="Rock Oil Group"
+            width={1687}
+            height={407}
+            priority
+            className="brandLogo"
+          />
+        </a>
+        <SiteNav />
+        <MobileMenu />
+      </header>
       <section className="hero" id="home">
         <picture className="heroPicture">
-          <source media="(max-width: 620px)" srcSet="/images/rock-oil-hero-mobile.webp" />
+          <source media="(max-width: 620px)" srcSet="/images/rock-oil-hero-mobile-v2.webp" />
           <Image
             src="/images/rock-oil-hero.jpg"
             alt="Offshore platform and subsea inspection robot operating above an underwater pipeline"
@@ -41,21 +56,6 @@ export default function Home() {
           <div className="waterShimmer" />
           <div className="underwaterParticles" />
         </div>
-
-        <header className="siteHeader">
-          <a className="brand" href="#home" aria-label="Rock Oil home">
-            <Image
-              src="/images/ROCG-HEADER-LOGO.svg"
-              alt="Rock Oil Group"
-              width={1687}
-              height={407}
-              priority
-              className="brandLogo"
-            />
-          </a>
-          <SiteNav />
-          <MobileMenu />
-        </header>
 
         <div className="heroContent">
           <p className="eyebrow">Engineering the future of asset integrity</p>
@@ -128,9 +128,9 @@ export default function Home() {
             energy infrastructure.
           </p>
           <div className="closingActions">
-            <a className="outlineButton light" href="mailto:enquiries@rockoilgroup.com.my">
+            <button className="outlineButton light" type="button" data-open-contact>
               Start a conversation <ArrowDownRight size={18} />
-            </a>
+            </button>
             <a className="textLink" href="#capabilities">
               Explore our capabilities <ArrowDownRight size={15} />
             </a>
@@ -183,6 +183,7 @@ export default function Home() {
         </div>
       </footer>
       <BackToTop />
+      <ContactModal />
     </main>
   );
 }
