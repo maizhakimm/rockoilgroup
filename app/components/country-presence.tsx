@@ -1,4 +1,7 @@
-import { ArrowDownRight } from "@phosphor-icons/react/dist/ssr";
+"use client";
+
+import { ArrowDownRight } from "@phosphor-icons/react";
+import { useState } from "react";
 
 function MalaysiaFlag() {
   return (
@@ -40,11 +43,20 @@ const countries = [
 ];
 
 export function CountryPresence() {
+  const [active, setActive] = useState<number | null>(null);
   return (
     <div className="countryPresence">
       <div className="countryGrid">
         {countries.map(({ name, office, address, Flag }, index) => (
-          <a className="countryCard" href="#contact" key={name}>
+          <article
+            className={`countryCard ${active === index ? "isActive" : ""}`}
+            key={name}
+            tabIndex={0}
+            role="button"
+            aria-expanded={active === index}
+            onClick={() => setActive(active === index ? null : index)}
+            onFocus={() => setActive(index)}
+          >
             <div className="flagIcon"><Flag /></div>
             <span className="countryIndex">0{index + 1}</span>
             <i aria-hidden="true" />
@@ -52,7 +64,7 @@ export function CountryPresence() {
             <span className="countryOffice">{office}</span>
             <small className="countryAddress">{address}</small>
             <ArrowDownRight size={15} />
-          </a>
+          </article>
         ))}
       </div>
     </div>

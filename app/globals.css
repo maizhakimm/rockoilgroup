@@ -137,20 +137,23 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
 .cardScan { position:absolute; z-index:1; left:0; right:0; height:1px; top:-5%; opacity:0; background:linear-gradient(90deg,transparent,rgba(103,221,231,.9),transparent); box-shadow:0 0 12px rgba(103,221,231,.55); }
 .capabilityCard.isActive .cardScan { opacity:.7; animation:cardScan 2.8s linear infinite; }
 @keyframes cardScan { from { top:0; } to { top:100%; } }
-.impact { background:var(--paper); color:#091116; height:305px; padding:0 clamp(28px,5.3vw,88px); display:grid; grid-template-columns:70px 4fr 3fr; align-items:stretch; gap:0; position:relative; }
-.verticalLabel { border-right:1px solid rgba(7,16,20,.15); padding-right:20px; }
+.impact { background:var(--paper); color:#091116; height:305px; padding:0 clamp(28px,5.3vw,88px); display:grid; grid-template-columns:4fr 3fr; align-items:stretch; gap:0; position:relative; }
+.verticalLabel { position:absolute; z-index:3; left:clamp(28px,5.3vw,88px); top:20px; border:0; padding:0; writing-mode:horizontal-tb; transform:none; color:rgba(7,16,20,.5); font-size:10px; font-weight:700; letter-spacing:.16em; }
+.verticalLabel:after { content:""; display:inline-block; width:34px; height:1px; margin:0 0 3px 12px; background:var(--red); }
 .statsGrid { height:100%; display:grid; grid-template-columns:repeat(4,1fr); align-items:stretch; }
-.stat { border-right:1px solid rgba(7,16,20,.14); padding:28px 20px; align-self:stretch; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; transition:background .4s,transform .4s,color .35s; }
+.stat { height:100%; border-left:1px solid rgba(7,16,20,.14); padding:28px 20px; align-self:stretch; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; transition:background .42s,transform .42s,color .35s; }
+.stat:last-child { border-right:1px solid rgba(7,16,20,.14); }
 .stat:before { content:""; position:absolute; inset:auto 0 0; height:2px; background:linear-gradient(90deg,var(--red),#2bc4d0); transform:scaleX(0); transform-origin:left; transition:transform .4s; }
 .stat:after { content:""; position:absolute; width:100px; height:100px; right:-55px; top:-55px; border-radius:50%; background:rgba(43,196,208,.12); filter:blur(14px); opacity:0; transition:.4s; }
 .stat:first-child { padding-left:0; }
-.stat strong { display:block; font-size:39px; letter-spacing:-.05em; transition:color .35s,transform .4s; }
-.stat > span { display:block; margin-top:12px; text-transform:uppercase; font-size:11px; line-height:1.5; }
+.stat strong { display:block; font-size:42px; line-height:1; letter-spacing:-.055em; transition:color .35s,transform .42s,font-size .42s,text-shadow .35s; }
+.stat > span { display:block; margin-top:14px; text-transform:uppercase; font-size:11px; line-height:1.5; transition:color .35s,transform .42s; }
 .stat > span span { display:block; }
-.stat:hover { background:rgba(255,255,255,.52); transform:translateY(-5px); }
+.stat:hover { z-index:2; color:#fff; background:linear-gradient(145deg,#071318,#0a2b31); transform:translateY(-6px); box-shadow:0 20px 45px rgba(6,16,21,.22); }
 .stat:hover:before { transform:scaleX(1); }
 .stat:hover:after { opacity:1; }
-.stat:hover strong { color:var(--red); transform:translateY(-3px) scale(1.06); transform-origin:left; }
+.stat:hover strong { font-size:58px; color:#67dde7; transform:translateY(-4px); transform-origin:left; text-shadow:0 0 22px rgba(103,221,231,.4); }
+.stat:hover > span { color:rgba(255,255,255,.78); transform:translateY(2px); }
 .presence { position:relative; min-width:0; height:100%; }
 .countryPresence { display:block; min-width:0; height:100%; }
 .countryGrid { height:100%; display:grid; grid-template-columns:repeat(3,1fr); }
@@ -168,14 +171,14 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
 .countryOffice { margin-top:6px; padding-right:15px; color:#697276; font-size:8px; line-height:1.45; text-transform:uppercase; transition:color .35s,transform .4s; }
 .countryAddress { max-height:0; opacity:0; overflow:hidden; margin-top:0; padding-right:14px; color:rgba(255,255,255,.68); font-size:8px; line-height:1.5; text-transform:none; transition:max-height .4s,opacity .35s,margin .4s; }
 .countryCard > svg { position:absolute; right:10px; bottom:12px; transition:transform .35s,color .35s; }
-.countryCard:hover { color:#fff; transform:translateY(-5px); }
-.countryCard:hover:before { transform:translateY(0); }
-.countryCard:hover .flagIcon { transform:scale(1.12); box-shadow:0 5px 16px rgba(0,0,0,.35); }
-.countryCard:hover .countryIndex { color:rgba(255,255,255,.35); }
-.countryCard:hover > strong { color:#fff; transform:translateY(-2px); margin-top:10px; }
-.countryCard:hover .countryOffice { color:rgba(255,255,255,.78); }
-.countryCard:hover .countryAddress { max-height:55px; opacity:1; margin-top:7px; }
-.countryCard:hover > svg { color:#e1202c; transform:translate(3px,3px); }
+.countryCard:hover,.countryCard.isActive,.countryCard:focus-visible { z-index:2; color:#fff; transform:translateY(-6px); box-shadow:0 20px 45px rgba(6,16,21,.2); outline:none; }
+.countryCard:hover:before,.countryCard.isActive:before,.countryCard:focus-visible:before { transform:translateY(0); }
+.countryCard:hover .flagIcon,.countryCard.isActive .flagIcon,.countryCard:focus-visible .flagIcon { transform:scale(1.25); box-shadow:0 5px 18px rgba(0,0,0,.4); }
+.countryCard:hover .countryIndex,.countryCard.isActive .countryIndex,.countryCard:focus-visible .countryIndex { color:rgba(255,255,255,.42); }
+.countryCard:hover > strong,.countryCard.isActive > strong,.countryCard:focus-visible > strong { color:#fff; font-size:18px; transform:translateY(-2px); margin-top:19px; }
+.countryCard:hover .countryOffice,.countryCard.isActive .countryOffice,.countryCard:focus-visible .countryOffice { color:#67dde7; font-size:9px; }
+.countryCard:hover .countryAddress,.countryCard.isActive .countryAddress,.countryCard:focus-visible .countryAddress { max-height:70px; opacity:1; margin-top:8px; font-size:9px; }
+.countryCard:hover > svg,.countryCard.isActive > svg,.countryCard:focus-visible > svg { color:#e1202c; transform:translate(3px,3px) scale(1.15); }
 .closing { min-height:640px; padding:105px clamp(28px,5.3vw,88px) 110px; background:radial-gradient(circle at 75% 45%,rgba(0,111,126,.12),transparent 30%),#081216; position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr); gap:clamp(60px,9vw,150px); align-items:center; isolation:isolate; }
 .closingImage { object-fit:cover; object-position:center; }
 .closingShade { position:absolute; inset:0; z-index:-3; background:linear-gradient(90deg,rgba(3,12,17,.98) 0%,rgba(3,12,17,.9) 36%,rgba(3,12,17,.38) 74%,rgba(3,12,17,.22)),linear-gradient(0deg,rgba(3,12,17,.68),transparent 45%,rgba(3,12,17,.16)); }
@@ -276,8 +279,8 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
   .capabilityGrid.hasActive .capabilityCard:not(.isActive),.capabilityCard:hover,.capabilityCard.isActive { opacity:1; }
   .capabilityCard.isActive .cardIndex { font-size:34px; }
   .capabilityCard.isActive h3 { font-size:17px; }
-  .impact { height:auto; min-height:305px; padding-top:46px; padding-bottom:46px; grid-template-columns:45px 1fr; gap:35px; }
-  .presence { grid-column:2; min-height:180px; }
+  .impact { height:auto; min-height:305px; padding-top:46px; padding-bottom:46px; grid-template-columns:1fr; gap:35px; }
+  .presence { grid-column:1; min-height:180px; }
 }
 @media (max-width:900px) {
   .desktopNav { display:none; }

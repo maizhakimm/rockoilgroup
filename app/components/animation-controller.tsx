@@ -29,11 +29,11 @@ export function AnimationController() {
 
       gsap.from(".stat", {
         scrollTrigger: { trigger: ".impact", start: "top 80%" },
-        y: 25,
         opacity: 0,
-        duration: 0.65,
+        duration: 0.55,
         stagger: 0.1,
-        ease: "power2.out",
+        ease: "power1.out",
+        clearProps: "opacity",
       });
 
       document.querySelectorAll<HTMLElement>("[data-count]").forEach((node) => {
