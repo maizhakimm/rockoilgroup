@@ -136,11 +136,7 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .stat > span { display:block; margin-top:12px; text-transform:uppercase; font-size:11px; line-height:1.5; }
 .stat > span span { display:block; }
 .presence { position:relative; min-width:0; }
-.countryPresence { display:grid; grid-template-columns:105px 1fr; gap:12px; align-items:stretch; }
-.presenceHeading { border-left:1px solid rgba(7,16,20,.16); padding:12px 12px 10px; display:flex; flex-direction:column; text-transform:uppercase; }
-.presenceHeading > span { font-size:8px; letter-spacing:.08em; }
-.presenceHeading strong { margin-top:18px; font-size:38px; line-height:.8; letter-spacing:-.06em; }
-.presenceHeading small { margin-top:auto; color:#687175; font-size:6px; line-height:1.5; letter-spacing:.08em; }
+.countryPresence { display:block; min-width:0; }
 .countryGrid { display:grid; grid-template-columns:repeat(3,1fr); }
 .countryCard { min-width:0; height:158px; border-left:1px solid rgba(7,16,20,.14); padding:14px 12px; display:flex; flex-direction:column; position:relative; overflow:hidden; transition:color .4s,background .4s,transform .4s; }
 .countryCard:last-child { border-right:1px solid rgba(7,16,20,.14); }
@@ -152,15 +148,17 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .countryCard:nth-child(2) > i { animation-delay:1s; }
 .countryCard:nth-child(3) > i { animation-delay:2s; }
 @keyframes countryBlink { 0%,30%,100% { opacity:.25; transform:scale(.7); } 10%,18% { opacity:1; transform:scale(1.25); box-shadow:0 0 7px rgba(225,32,44,.6); } }
-.countryCard > strong { margin-top:auto; text-transform:uppercase; font-size:10px; line-height:1.1; transition:transform .4s,color .35s; }
-.countryCard > small { min-height:25px; margin-top:5px; padding-right:15px; color:#697276; font-size:6px; line-height:1.45; text-transform:uppercase; transition:color .35s; }
+.countryCard > strong { margin-top:auto; text-transform:uppercase; font-size:10px; line-height:1.1; transition:transform .4s,color .35s,margin .4s; }
+.countryOffice { margin-top:5px; padding-right:15px; color:#697276; font-size:6px; line-height:1.45; text-transform:uppercase; transition:color .35s,transform .4s; }
+.countryAddress { max-height:0; opacity:0; overflow:hidden; margin-top:0; padding-right:14px; color:rgba(255,255,255,.58); font-size:6px; line-height:1.45; text-transform:none; transition:max-height .4s,opacity .35s,margin .4s; }
 .countryCard > svg { position:absolute; right:10px; bottom:12px; transition:transform .35s,color .35s; }
 .countryCard:hover { color:#fff; transform:translateY(-5px); }
 .countryCard:hover:before { transform:translateY(0); }
 .countryCard:hover .flagIcon { transform:scale(1.12); box-shadow:0 5px 16px rgba(0,0,0,.35); }
 .countryCard:hover .countryIndex { color:rgba(255,255,255,.35); }
-.countryCard:hover > strong { color:#fff; transform:translateY(-2px); }
-.countryCard:hover > small { color:rgba(255,255,255,.5); }
+.countryCard:hover > strong { color:#fff; transform:translateY(-2px); margin-top:10px; }
+.countryCard:hover .countryOffice { color:rgba(255,255,255,.78); }
+.countryCard:hover .countryAddress { max-height:45px; opacity:1; margin-top:5px; }
 .countryCard:hover > svg { color:#e1202c; transform:translate(3px,3px); }
 .closing { padding:100px clamp(28px,5.3vw,88px) 120px; background:#081216; }
 .closing h2 { text-transform:uppercase; font-size:clamp(48px,7vw,110px); line-height:.9; letter-spacing:-.06em; margin:20px 0 42px; }
@@ -223,11 +221,9 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
   .stat:nth-child(2) { border-right:0; }
   .stat:nth-child(3) { padding-left:0; }
   .stat strong { font-size:34px; }
-  .countryPresence { grid-template-columns:1fr; }
-  .presenceHeading { min-height:105px; }
-  .presenceHeading strong { margin-top:14px; }
   .countryGrid { grid-template-columns:1fr; }
   .countryCard { height:125px; border-right:1px solid rgba(7,16,20,.14); }
+  .countryAddress { max-height:42px; opacity:1; margin-top:5px; color:#697276; }
   .closing { padding:80px 20px 100px; }
 }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } .scanSignal,.scanPacket { display:none; } }

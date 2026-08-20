@@ -24,39 +24,33 @@ function BruneiFlag() {
   );
 }
 
-function UsaFlag() {
+function IndonesiaFlag() {
   return (
     <svg viewBox="0 0 36 24" aria-hidden="true">
       <rect width="36" height="24" rx="2" fill="#fff" />
-      {[0, 4, 8, 12, 16, 20].map((y) => <rect key={y} y={y} width="36" height="2" fill="#bd2939" />)}
-      <rect width="16" height="12" rx="1.5" fill="#263d74" />
-      {[4, 8, 12].map((x) => [3, 6, 9].map((y) => <circle key={`${x}-${y}`} cx={x} cy={y} r=".55" fill="#fff" />))}
+      <path d="M0 2a2 2 0 0 1 2-2h32a2 2 0 0 1 2 2v10H0Z" fill="#ce2537" />
     </svg>
   );
 }
 
 const countries = [
-  { name: "Malaysia", location: "Kuala Lumpur · Miri · KSB, Terengganu", Flag: MalaysiaFlag },
-  { name: "Brunei", location: "Kuala Belait", Flag: BruneiFlag },
-  { name: "United States", location: "Sugar Land, Texas", Flag: UsaFlag },
+  { name: "Malaysia", office: "Kuala Lumpur (HQ)", address: "BO1-A-9, Menara 2, KL Eco City, 3 Jalan Bangsar, 59200 Kuala Lumpur.", Flag: MalaysiaFlag },
+  { name: "Brunei", office: "Kuala Belait", address: "C/O DPS, P.O. Box 557, Kuala Belait, KA1531, Negara Brunei Darussalam.", Flag: BruneiFlag },
+  { name: "Indonesia", office: "Jakarta Barat", address: "C/O PT. Indo Petrogas Energy, Graha Kencana Blok GK, Lantai 2E, Jl. Raya Pejuangan No. 88, 11530.", Flag: IndonesiaFlag },
 ];
 
 export function CountryPresence() {
   return (
     <div className="countryPresence">
-      <div className="presenceHeading">
-        <span>Our presence</span>
-        <strong>03</strong>
-        <small>International locations</small>
-      </div>
       <div className="countryGrid">
-        {countries.map(({ name, location, Flag }, index) => (
+        {countries.map(({ name, office, address, Flag }, index) => (
           <a className="countryCard" href="#contact" key={name}>
             <div className="flagIcon"><Flag /></div>
             <span className="countryIndex">0{index + 1}</span>
             <i aria-hidden="true" />
             <strong>{name}</strong>
-            <small>{location}</small>
+            <span className="countryOffice">{office}</span>
+            <small className="countryAddress">{address}</small>
             <ArrowDownRight size={15} />
           </a>
         ))}
