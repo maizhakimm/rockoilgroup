@@ -27,16 +27,26 @@ export function CapabilitiesSection() {
       </div>
       <div className={`capabilityGrid ${active !== null ? "hasActive" : ""}`} onMouseLeave={() => setActive(null)}>
         {services.map(({ index, title, description, icon:Icon }, position) => (
-          <a id={`service-${index}`} href="#contact" className={`capabilityCard ${active === position ? "isActive" : ""}`} key={index} onMouseEnter={() => setActive(position)} onFocus={() => setActive(position)}>
+          <article
+            id={`service-${index}`}
+            className={`capabilityCard ${active === position ? "isActive" : ""}`}
+            key={index}
+            tabIndex={0}
+            onClick={() => setActive(position)}
+            onMouseEnter={() => setActive(position)}
+            onFocus={() => setActive(position)}
+          >
             <Icon className="blueprintIcon" aria-hidden="true" />
             <span className="cardScan" aria-hidden="true" />
             <span className="cardIndex">{index}</span>
             <Icon className="serviceIcon" />
             <h3>{title}</h3>
             <p className="cardDescription">{description}</p>
-            <span className="cardExplore">Explore service</span>
-            <ArrowDownRight className="cardArrow" size={18} weight="light" />
-          </a>
+            <a className="cardExplore" href="#contact" onClick={(event) => event.stopPropagation()}>
+              <span>Explore service</span>
+              <ArrowDownRight className="cardArrow" size={18} weight="light" />
+            </a>
+          </article>
         ))}
       </div>
     </section>

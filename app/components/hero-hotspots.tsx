@@ -12,6 +12,7 @@ const hotspots = [
     detail: "Structural assurance and lifecycle intelligence for critical offshore assets.",
     target: "#service-03",
     imagePoint: { x: 1470, y: 320 },
+    mobilePoint: { x: 700, y: 500 },
   },
   {
     id: "pipeline",
@@ -21,6 +22,7 @@ const hotspots = [
     detail: "Inspection-led engineering designed to protect subsea infrastructure.",
     target: "#service-01",
     imagePoint: { x: 1080, y: 820 },
+    mobilePoint: { x: 330, y: 1260 },
   },
   {
     id: "rov",
@@ -30,6 +32,7 @@ const hotspots = [
     detail: "Intelligent subsea inspection with greater reach and lower operational risk.",
     target: "#service-02",
     imagePoint: { x: 1435, y: 688 },
+    mobilePoint: { x: 655, y: 955 },
   },
 ];
 
@@ -47,16 +50,19 @@ export function HeroHotspots() {
 
     const placeHotspots = () => {
       const { width, height } = layer.getBoundingClientRect();
-      const scale = Math.max(width / 1920, height / 1080);
-      const renderedWidth = 1920 * scale;
-      const renderedHeight = 1080 * scale;
-      const horizontalPosition = window.matchMedia("(max-width: 620px)").matches ? 0.61 : 0.5;
+      const mobile = window.matchMedia("(max-width: 620px)").matches;
+      const sourceWidth = mobile ? 853 : 1920;
+      const sourceHeight = mobile ? 1844 : 1080;
+      const scale = Math.max(width / sourceWidth, height / sourceHeight);
+      const renderedWidth = sourceWidth * scale;
+      const renderedHeight = sourceHeight * scale;
+      const horizontalPosition = 0.5;
       const offsetX = (width - renderedWidth) * horizontalPosition;
-      const offsetY = (height - renderedHeight) * 0.5;
+      const offsetY = (height - renderedHeight) * 0.5 + (mobile ? 170 : 0);
 
-      setPositions(hotspots.map(({ imagePoint }) => ({
-        left: offsetX + imagePoint.x * scale,
-        top: offsetY + imagePoint.y * scale,
+      setPositions(hotspots.map(({ imagePoint, mobilePoint }) => ({
+        left: offsetX + (mobile ? mobilePoint.x : imagePoint.x) * scale,
+        top: offsetY + (mobile ? mobilePoint.y : imagePoint.y) * scale,
       })));
     };
 

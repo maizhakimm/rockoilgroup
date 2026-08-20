@@ -9,6 +9,7 @@ import { CapabilitiesSection } from "./components/capabilities-section";
 import { HeroHotspots } from "./components/hero-hotspots";
 import { CountryPresence } from "./components/country-presence";
 import { OperationalSequence } from "./components/operational-sequence";
+import { BackToTop } from "./components/back-to-top";
 
 const stats = [
   { value: "20+", label: "Years of\nexperience" },
@@ -139,7 +140,7 @@ export default function Home() {
         <OperationalSequence />
       </section>
 
-      <footer className="siteFooter">
+      <footer className="siteFooter" id="footer">
         <div className="footerBrand">
           <a href="#home" aria-label="Rock Oil home">
             <Image
@@ -161,6 +162,14 @@ export default function Home() {
           <a href="#contact">Contact</a>
         </div>
 
+        <div className="footerNav footerCompany">
+          <span>Company</span>
+          <a href="#contact">Careers</a>
+          <a href="#footer">Sitemap</a>
+          <a href="#footer">Terms</a>
+          <a href="#footer">Privacy policy</a>
+        </div>
+
         <div className="footerContact">
           <span>Start a conversation</span>
           <a href="mailto:enquiries@rockoilgroup.com.my">
@@ -171,9 +180,9 @@ export default function Home() {
         <div className="footerBottom">
           <span>© 2026 Rock Oil Consulting Sdn. Bhd.</span>
           <span>All rights reserved.</span>
-          <a href="#home">Back to top ↑</a>
         </div>
       </footer>
+      <BackToTop />
     </main>
   );
 }
