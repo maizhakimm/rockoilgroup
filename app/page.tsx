@@ -6,6 +6,7 @@ import { MobileMenu } from "./components/mobile-menu";
 import { AnimationController } from "./components/animation-controller";
 import { SiteNav } from "./components/site-nav";
 import { CapabilitiesSection } from "./components/capabilities-section";
+import { HeroHotspots } from "./components/hero-hotspots";
 
 const stats = [
   { value: "20+", label: "Years of\nexperience" },
@@ -73,10 +74,7 @@ export default function Home() {
         <div className="depthScale" aria-hidden="true">
           <span>00</span><span>20</span><span>40</span><span>60</span><span>80</span>
         </div>
-        <div className="rovLabel">
-          <i />
-          <div><b>Subsea inspection</b><span>Autonomous. Intelligent.<br />In action.</span></div>
-        </div>
+        <HeroHotspots />
         <div className="scrollCue"><span>Scroll</span><i /></div>
       </section>
 

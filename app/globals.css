@@ -43,6 +43,29 @@ h1 .muted { color:#505a5e; letter-spacing:-.045em; }
 .outlineButton:hover svg { transform:translate(4px,4px); }
 .depthScale { position:absolute; right:28px; top:50%; display:flex; flex-direction:column; gap:43px; color:rgba(255,255,255,.32); font-size:9px; }
 .depthScale span:before { content:""; width:16px; height:1px; background:rgba(255,255,255,.22); position:absolute; right:25px; margin-top:6px; }
+.heroHotspots { position:absolute; inset:86px 0 0; z-index:12; pointer-events:none; }
+.heroHotspot { position:absolute; width:34px; height:34px; pointer-events:auto; }
+.heroHotspot--platform { left:79%; top:25%; }
+.heroHotspot--pipeline { left:63%; top:72%; }
+.heroHotspot--rov { left:82%; top:69%; }
+.hotspotTarget { width:34px; height:34px; padding:0; display:grid; place-items:center; color:#fff; border:1px solid rgba(255,255,255,.68); border-radius:50%; background:rgba(3,16,21,.34); backdrop-filter:blur(4px); cursor:pointer; position:relative; transition:background .3s,border-color .3s,transform .3s; }
+.hotspotTarget:before,.hotspotTarget:after { content:""; position:absolute; inset:-8px; border:1px solid rgba(225,32,44,.65); border-radius:50%; animation:hotspotPulse 2.8s ease-out infinite; }
+.hotspotTarget:after { inset:-15px; border-color:rgba(103,221,231,.2); animation-delay:.65s; }
+.heroHotspot--pipeline .hotspotTarget:before,.heroHotspot--pipeline .hotspotTarget:after { animation-delay:.35s; }
+.heroHotspot--rov .hotspotTarget:before,.heroHotspot--rov .hotspotTarget:after { animation-delay:.7s; }
+.heroHotspot.isActive .hotspotTarget { color:var(--red); background:rgba(3,16,21,.88); border-color:var(--red); transform:scale(1.08); }
+@keyframes hotspotPulse { 0% { transform:scale(.72); opacity:0; } 28% { opacity:.85; } 100% { transform:scale(1.2); opacity:0; } }
+.hotspotAnnotation { position:absolute; left:50px; top:50%; width:224px; padding:15px 16px 14px; border:1px solid rgba(255,255,255,.24); background:linear-gradient(135deg,rgba(5,18,23,.96),rgba(5,30,36,.88)); backdrop-filter:blur(10px); opacity:0; visibility:hidden; transform:translate(10px,-50%); transition:opacity .28s,transform .32s,visibility .28s; box-shadow:0 18px 50px rgba(0,0,0,.28); }
+.hotspotAnnotation:before { content:""; position:absolute; right:100%; top:50%; width:50px; height:1px; background:linear-gradient(90deg,var(--red),rgba(255,255,255,.55)); }
+.heroHotspot--platform .hotspotAnnotation,.heroHotspot--rov .hotspotAnnotation { left:auto; right:50px; transform:translate(-10px,-50%); }
+.heroHotspot--platform .hotspotAnnotation:before,.heroHotspot--rov .hotspotAnnotation:before { left:100%; right:auto; background:linear-gradient(90deg,rgba(255,255,255,.55),var(--red)); }
+.heroHotspot.isActive .hotspotAnnotation { opacity:1; visibility:visible; transform:translate(0,-50%); }
+.hotspotMeta { color:rgba(255,255,255,.48); font-size:8px; letter-spacing:.12em; text-transform:uppercase; display:flex; justify-content:space-between; }
+.hotspotMeta span { color:var(--red); }
+.hotspotAnnotation strong { display:block; margin-top:9px; font-size:12px; text-transform:uppercase; letter-spacing:.02em; }
+.hotspotAnnotation p { color:rgba(255,255,255,.58); font-size:10px; line-height:1.5; margin:8px 0 12px; }
+.hotspotAnnotation a { color:rgba(255,255,255,.82); font-size:8px; text-transform:uppercase; letter-spacing:.08em; display:flex; align-items:center; justify-content:space-between; }
+.hotspotAnnotation a:hover { color:#fff; }
 .rovLabel { position:absolute; right:9vw; bottom:15%; display:flex; gap:15px; align-items:flex-start; font-size:10px; text-transform:uppercase; }
 .rovLabel i { width:1px; height:70px; background:rgba(255,255,255,.35); position:relative; }
 .rovLabel i:before,.rovLabel i:after { content:""; position:absolute; background:var(--red); }
@@ -116,6 +139,11 @@ h1 .muted { color:#505a5e; letter-spacing:-.045em; }
   .mobilePanel a { padding:13px 10px; text-transform:uppercase; font-size:11px; border-bottom:1px solid rgba(255,255,255,.08); }
   .heroContent { width:70vw; }
   .rovLabel { display:none; }
+  .heroHotspots { inset:72px 0 0; }
+  .heroHotspot--platform { left:77%; top:24%; }
+  .heroHotspot--pipeline { left:58%; top:70%; }
+  .heroHotspot--rov { left:80%; top:67%; }
+  .hotspotAnnotation { width:200px; }
   .capabilities { grid-template-columns:1fr; padding-left:28px; }
   .capabilityGrid { border-top:1px solid var(--line); }
   .impact { grid-template-columns:1fr; }
@@ -140,6 +168,12 @@ h1 .muted { color:#505a5e; letter-spacing:-.045em; }
   .introBlock { margin-top:42px; width:min(290px,90%); }
   .outlineButton { min-width:255px; }
   .depthScale,.scrollCue { display:none; }
+  .heroHotspot--platform { left:76%; top:19%; }
+  .heroHotspot--pipeline { left:58%; top:67%; }
+  .heroHotspot--rov { left:79%; top:61%; }
+  .hotspotAnnotation { position:fixed; left:20px !important; right:20px !important; top:auto; bottom:20px; width:auto; transform:translateY(12px) !important; }
+  .hotspotAnnotation:before { display:none; }
+  .heroHotspot.isActive .hotspotAnnotation { transform:translateY(0) !important; }
   .capabilities { padding-left:20px; }
   .sectionLead { padding:45px 20px 38px 0; }
   .capabilityGrid { grid-template-columns:repeat(2,1fr); }

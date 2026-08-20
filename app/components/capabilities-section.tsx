@@ -26,7 +26,7 @@ export function CapabilitiesSection() {
       </div>
       <div className="capabilityGrid" onMouseLeave={() => setActive(0)}>
         {services.map(({ index, title, icon:Icon }, position) => (
-          <a href="#contact" className={`capabilityCard ${active === position ? "isActive" : ""}`} key={index} onMouseEnter={() => setActive(position)} onFocus={() => setActive(position)}>
+          <a id={`service-${index}`} href="#contact" className={`capabilityCard ${active === position ? "isActive" : ""}`} key={index} onMouseEnter={() => setActive(position)} onFocus={() => setActive(position)}>
             <span className="cardIndex">{index}</span>
             <Icon className="serviceIcon" />
             <h3>{title}</h3>
