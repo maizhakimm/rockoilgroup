@@ -59,18 +59,18 @@ export function AnimationController() {
       gsap.from(".closingLead > *", {
         scrollTrigger: { trigger: ".closing", start: "top 75%" },
         y: 38,
-        opacity: 0,
         duration: 0.8,
         stagger: 0.12,
         ease: "power3.out",
+        clearProps: "transform",
       });
 
       gsap.from(".operationSequence", {
         scrollTrigger: { trigger: ".closing", start: "top 72%" },
         x: 55,
-        opacity: 0,
         duration: 1,
         ease: "power3.out",
+        clearProps: "transform",
       });
     });
 
