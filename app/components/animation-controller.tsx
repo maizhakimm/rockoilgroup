@@ -20,11 +20,11 @@ export function AnimationController() {
 
       gsap.from(".capabilityCard", {
         scrollTrigger: { trigger: ".capabilities", start: "top 82%" },
-        y: 35,
-        opacity: 0,
-        duration: 0.75,
+        y: 24,
+        duration: 0.65,
         stagger: 0.08,
         ease: "power3.out",
+        clearProps: "transform",
       });
 
       gsap.from(".stat", {

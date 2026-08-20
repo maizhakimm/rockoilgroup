@@ -4,7 +4,7 @@ html { scroll-behavior:smooth; }
 body { margin:0; color:#fff; background:var(--ink); font-family:Arial,Helvetica,sans-serif; }
 a { color:inherit; text-decoration:none; }
 button { font:inherit; }
-.hero { min-height:920px; height:100svh; position:relative; overflow:hidden; isolation:isolate; border-bottom:1px solid var(--line); }
+.hero { min-height:740px; height:78svh; max-height:840px; position:relative; overflow:hidden; isolation:isolate; border-bottom:1px solid var(--line); }
 .heroImage { object-fit:cover; object-position:center; z-index:-3; }
 .heroShade { position:absolute; inset:0; z-index:-2; background:linear-gradient(90deg,rgba(1,10,14,.96) 0%,rgba(1,10,14,.67) 33%,rgba(1,10,14,.08) 64%,rgba(1,10,14,.15)),linear-gradient(0deg,rgba(1,9,13,.45),transparent 50%); }
 .techGrid { position:absolute; inset:0; z-index:-1; opacity:.22; background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size:100% 92px,9vw 100%; mask-image:linear-gradient(to bottom,#000,transparent 75%); }
@@ -31,7 +31,7 @@ button { font:inherit; }
 h1 { margin:0; font-size:clamp(64px,6vw,98px); line-height:.85; text-transform:uppercase; letter-spacing:-.065em; font-weight:700; }
 h1 .heroTitleLine { display:block; overflow:hidden; padding-bottom:.05em; margin-bottom:-.05em; }
 h1 .heroTitleLine > span { display:block; }
-h1 .muted { color:rgba(155,165,167,.47); }
+h1 .muted { color:#505a5e; letter-spacing:-.045em; }
 .introBlock { margin-top:36px; width:300px; }
 .introBlock > i { display:block; width:42px; height:2px; background:var(--red); margin-bottom:24px; }
 .introBlock p { font-size:14px; line-height:1.65; color:rgba(255,255,255,.74); }
@@ -68,7 +68,7 @@ h1 .muted { color:rgba(155,165,167,.47); }
 .capabilityCard { border-left:1px solid var(--line); padding:36px 18px 34px; min-width:0; min-height:380px; display:flex; flex-direction:column; transition:background .36s,border-color .36s,opacity .36s; position:relative; overflow:hidden; isolation:isolate; }
 .capabilityCard:before { content:""; position:absolute; top:0; left:0; right:100%; height:2px; background:var(--red); transition:right .38s cubic-bezier(.2,.8,.2,1); }
 .capabilityCard:after { content:""; position:absolute; width:190px; height:190px; right:-80px; bottom:-110px; border-radius:50%; background:rgba(0,118,136,.18); filter:blur(25px); opacity:0; transition:.4s; z-index:-1; }
-.capabilityGrid:hover .capabilityCard:not(:hover) { opacity:.52; }
+.capabilityGrid:hover .capabilityCard:not(:hover) { opacity:.7; }
 .capabilityCard:hover,.capabilityCard.isActive { background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,97,111,.1)); border-color:rgba(255,255,255,.28); opacity:1 !important; }
 .capabilityCard:hover:before,.capabilityCard.isActive:before { right:0; }
 .capabilityCard:hover:after,.capabilityCard.isActive:after { opacity:1; }
