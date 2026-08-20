@@ -172,14 +172,13 @@ export default function Home() {
 
         <div className="footerContact">
           <span>Start a conversation</span>
-          <a href="mailto:enquiries@rockoilgroup.com.my">
+          <a href="#contact" data-open-contact>
             enquiries@rockoilgroup.com.my <ArrowDownRight size={17} />
           </a>
         </div>
 
         <div className="footerBottom">
-          <span>© 2026 Rock Oil Consulting Sdn. Bhd.</span>
-          <span>All rights reserved.</span>
+          <span>© 2026 Rock Oil Consulting Sdn. Bhd. · All rights reserved.</span>
         </div>
       </footer>
       <BackToTop />
