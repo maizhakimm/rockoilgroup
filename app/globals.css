@@ -189,6 +189,7 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
 .expertiseStack { max-width:1380px; margin:0 auto; padding-bottom:max(8vh,calc(100svh - 620px)); }
 .expertiseCard { --card-top:calc(78px + var(--expertise-offset,0px)); position:sticky; top:var(--card-top); min-height:510px; margin-bottom:14vh; display:grid; grid-template-columns:1.08fr .92fr; overflow:hidden; color:#fff; border:1px solid rgba(255,255,255,.22); border-radius:0 48px 0 0; background:#0b1b21; box-shadow:0 16px 36px rgba(7,17,22,.14); isolation:isolate; }
 .expertiseCard:last-child { margin-bottom:0; }
+.expertiseCard:nth-child(4) { margin-bottom:0; }
 .expertiseCardCopy { padding:58px clamp(32px,4.5vw,74px) 50px; display:flex; flex-direction:column; position:relative; z-index:2; }
 .expertiseCardMeta { min-width:0; display:flex; justify-content:space-between; gap:25px; padding-bottom:22px; border-bottom:1px solid currentColor; color:rgba(255,255,255,.55); font-size:9px; letter-spacing:.14em; text-transform:uppercase; }
 .expertiseCardMeta span:last-child { min-width:0; overflow-wrap:anywhere; }
