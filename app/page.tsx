@@ -11,6 +11,7 @@ import { CountryPresence } from "./components/country-presence";
 import { OperationalSequence } from "./components/operational-sequence";
 import { BackToTop } from "./components/back-to-top";
 import { ContactModal } from "./components/contact-modal";
+import { ExpertiseSection } from "./components/expertise-section";
 
 const stats = [
   { value: "20+", label: "Years of\nexperience" },
@@ -100,6 +101,8 @@ export default function Home() {
           <CountryPresence />
         </div>
       </section>
+
+      <ExpertiseSection />
 
       <section className="closing" id="contact">
         <picture className="closingPicture">

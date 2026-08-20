@@ -11,7 +11,7 @@ export function SiteNav() {
   const [active, setActive] = useState("home");
 
   useEffect(() => {
-    const ids = ["home", "capabilities", "about", "contact"];
+    const ids = ["home", "solutions", "capabilities", "about", "contact"];
     const observer = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (visible) setActive(visible.target.id);
