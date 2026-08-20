@@ -60,7 +60,10 @@ export function ExpertiseSection() {
           <article
             className={`expertiseCard expertiseCard--${tone}`}
             key={title}
-            style={{ "--expertise-index": index } as React.CSSProperties}
+            style={{
+              "--expertise-offset": `${index * 22}px`,
+              "--expertise-mobile-offset": `${index * 14}px`,
+            } as React.CSSProperties}
           >
             <div className="expertiseCardCopy">
               <div className="expertiseCardMeta">

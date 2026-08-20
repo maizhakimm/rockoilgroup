@@ -187,10 +187,11 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
 .expertiseIntro .eyebrow { color:rgba(7,17,22,.55); }
 .expertiseIntro > p { max-width:510px; margin:0 0 5px auto; color:rgba(7,17,22,.58); font-size:14px; line-height:1.7; }
 .expertiseStack { max-width:1380px; margin:0 auto; padding-bottom:8vh; }
-.expertiseCard { --card-top:calc(78px + (var(--expertise-index) * 18px)); position:sticky; top:var(--card-top); min-height:510px; margin-bottom:14vh; display:grid; grid-template-columns:1.08fr .92fr; overflow:hidden; color:#fff; border:1px solid rgba(255,255,255,.22); border-radius:0 48px 0 0; background:#0b1b21; box-shadow:0 16px 36px rgba(7,17,22,.14); isolation:isolate; }
+.expertiseCard { --card-top:calc(78px + var(--expertise-offset,0px)); position:sticky; top:var(--card-top); min-height:510px; margin-bottom:14vh; display:grid; grid-template-columns:1.08fr .92fr; overflow:hidden; color:#fff; border:1px solid rgba(255,255,255,.22); border-radius:0 48px 0 0; background:#0b1b21; box-shadow:0 16px 36px rgba(7,17,22,.14); isolation:isolate; }
 .expertiseCard:last-child { margin-bottom:0; }
 .expertiseCardCopy { padding:58px clamp(32px,4.5vw,74px) 50px; display:flex; flex-direction:column; position:relative; z-index:2; }
-.expertiseCardMeta { display:flex; justify-content:space-between; gap:25px; padding-bottom:22px; border-bottom:1px solid currentColor; color:rgba(255,255,255,.55); font-size:9px; letter-spacing:.14em; text-transform:uppercase; }
+.expertiseCardMeta { min-width:0; display:flex; justify-content:space-between; gap:25px; padding-bottom:22px; border-bottom:1px solid currentColor; color:rgba(255,255,255,.55); font-size:9px; letter-spacing:.14em; text-transform:uppercase; }
+.expertiseCardMeta span:last-child { min-width:0; overflow-wrap:anywhere; }
 .expertiseCardMeta span:first-child { color:#fff; font-size:17px; letter-spacing:.04em; }
 .expertiseCard h3 { max-width:800px; margin:45px 0 20px; font-size:clamp(42px,5vw,78px); line-height:.9; letter-spacing:-.06em; text-transform:uppercase; }
 .expertiseCardCopy > p { max-width:590px; margin:0; color:rgba(255,255,255,.66); font-size:14px; line-height:1.65; }
@@ -422,11 +423,13 @@ h1 .heroTitleLine:nth-child(4) > span { animation:titleScan 6s ease-in-out infin
   .expertiseIntro h2 { white-space:normal; font-size:clamp(44px,13.5vw,58px); }
   .expertiseIntro > p { font-size:12px; }
   .expertiseStack { padding-bottom:3vh; }
-  .expertiseCard { --card-top:calc(66px + (var(--expertise-index) * 10px)); min-height:640px; margin-bottom:12vh; grid-template-rows:1fr 205px; border-radius:0 42px 0 0; }
+  .expertiseCard { --card-top:calc(66px + var(--expertise-mobile-offset,0px)); min-height:640px; margin-bottom:12vh; grid-template-rows:1fr 205px; border-radius:0 42px 0 0; }
   .expertiseCardCopy { padding:32px 25px 28px; }
   .expertiseCardMeta { padding-bottom:16px; }
-  .expertiseCardMeta span:last-child { max-width:175px; text-align:right; line-height:1.4; }
+  .expertiseCardMeta span:last-child { max-width:158px; text-align:right; line-height:1.4; }
   .expertiseCard h3 { margin:30px 0 16px; font-size:clamp(34px,10vw,46px); }
+  .expertiseCard:nth-child(4) h3 { max-width:100%; font-size:clamp(27px,8.1vw,36px); line-height:.94; letter-spacing:-.045em; overflow-wrap:anywhere; }
+  .expertiseCard:nth-child(4) .expertiseCardMeta span:last-child { max-width:132px; font-size:8px; letter-spacing:.1em; }
   .expertiseCardCopy > p { font-size:12px; }
   .expertiseCardCopy > a { margin-top:30px; }
   .expertiseOrbit { width:170px; }
