@@ -56,12 +56,20 @@ export function AnimationController() {
         ease: "power3.out",
       });
 
-      gsap.from(".closing > *", {
+      gsap.from(".closingLead > *", {
         scrollTrigger: { trigger: ".closing", start: "top 75%" },
         y: 38,
         opacity: 0,
         duration: 0.8,
         stagger: 0.12,
+        ease: "power3.out",
+      });
+
+      gsap.from(".operationSequence", {
+        scrollTrigger: { trigger: ".closing", start: "top 72%" },
+        x: 55,
+        opacity: 0,
+        duration: 1,
         ease: "power3.out",
       });
     });
@@ -79,8 +87,22 @@ export function AnimationController() {
     };
     hero?.addEventListener("pointermove", onMove);
 
+    const closing = document.querySelector<HTMLElement>(".closing");
+    const closingImage = document.querySelector<HTMLElement>(".closingImage");
+    const closingGlow = document.querySelector<HTMLElement>(".closingGlow");
+    const onClosingMove = (event: PointerEvent) => {
+      if (!closing || !closingImage || !closingGlow || event.pointerType === "touch") return;
+      const bounds = closing.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      gsap.to(closingImage, { x: x * 8, y: y * 5, scale: 1.012, duration: 1.5, ease: "power2.out" });
+      gsap.to(closingGlow, { x: x * 24, y: y * 18, duration: 1.7, ease: "power2.out" });
+    };
+    closing?.addEventListener("pointermove", onClosingMove);
+
     return () => {
       hero?.removeEventListener("pointermove", onMove);
+      closing?.removeEventListener("pointermove", onClosingMove);
       context.revert();
     };
   }, []);

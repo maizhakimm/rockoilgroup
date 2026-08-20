@@ -162,7 +162,7 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .countryCard:hover > svg { color:#e1202c; transform:translate(3px,3px); }
 .closing { min-height:640px; padding:105px clamp(28px,5.3vw,88px) 110px; background:radial-gradient(circle at 75% 45%,rgba(0,111,126,.12),transparent 30%),#081216; position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr); gap:clamp(60px,9vw,150px); align-items:center; isolation:isolate; }
 .closingImage { object-fit:cover; object-position:center; z-index:-4; }
-.closingShade { position:absolute; inset:0; z-index:-3; background:linear-gradient(90deg,rgba(3,12,17,.98) 0%,rgba(3,12,17,.9) 39%,rgba(3,12,17,.45) 73%,rgba(3,12,17,.32)),linear-gradient(0deg,rgba(3,12,17,.76),transparent 45%,rgba(3,12,17,.22)); }
+.closingShade { position:absolute; inset:0; z-index:-3; background:linear-gradient(90deg,rgba(3,12,17,.98) 0%,rgba(3,12,17,.9) 36%,rgba(3,12,17,.38) 74%,rgba(3,12,17,.22)),linear-gradient(0deg,rgba(3,12,17,.68),transparent 45%,rgba(3,12,17,.16)); }
 .closingGrid { position:absolute; inset:0; z-index:-2; opacity:.18; background-image:linear-gradient(rgba(255,255,255,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size:86px 86px; mask-image:linear-gradient(90deg,transparent 4%,#000 48%,#000); }
 .closingGrid:after { content:""; position:absolute; width:1px; height:160%; left:72%; top:-30%; background:linear-gradient(transparent,rgba(102,228,237,.8),transparent); transform:rotate(28deg); animation:closingScan 8s linear infinite; box-shadow:0 0 18px rgba(102,228,237,.28); }
 .closingGlow { position:absolute; z-index:-1; width:420px; height:420px; right:8%; top:14%; border-radius:50%; border:1px solid rgba(103,221,231,.06); box-shadow:inset 0 0 90px rgba(103,221,231,.025); animation:closingPulse 5s ease-in-out infinite; }
@@ -172,36 +172,39 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 @keyframes closingScan { from { transform:translateX(-65vw) rotate(28deg); } to { transform:translateX(55vw) rotate(28deg); } }
 @keyframes closingPulse { 50% { transform:scale(1.08); opacity:.55; } }
 .closingLead { position:relative; z-index:1; }
-.closing h2 { text-transform:uppercase; font-size:clamp(58px,6.8vw,108px); line-height:.86; letter-spacing:-.065em; margin:20px 0 30px; max-width:920px; }
+.closing h2 { text-transform:uppercase; font-size:clamp(54px,5.8vw,92px); line-height:.86; letter-spacing:-.065em; margin:20px 0 30px; max-width:920px; }
+.closing h2 span { display:block; white-space:nowrap; }
 .closingCopy { max-width:480px; margin:0; color:rgba(255,255,255,.55); font-size:13px; line-height:1.65; }
 .closingActions { display:flex; align-items:center; gap:34px; margin-top:40px; }
 .light { margin-top:0; }
-.textLink { display:flex; align-items:center; gap:12px; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:rgba(255,255,255,.62); transition:color .3s; }
+.textLink { display:flex; align-items:center; gap:12px; padding-bottom:7px; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:rgba(255,255,255,.78); border-bottom:1px solid rgba(225,32,44,.45); transition:color .3s,border-color .3s; }
 .textLink svg { transition:transform .35s; }
-.textLink:hover { color:#fff; }
+.textLink:hover { color:#fff; border-color:var(--red); }
 .textLink:hover svg { transform:translate(4px,4px); color:var(--red); }
 .operationSequence { position:relative; z-index:1; border:1px solid rgba(255,255,255,.15); background:rgba(5,18,23,.54); backdrop-filter:blur(8px); padding:22px 24px 18px; box-shadow:0 30px 80px rgba(0,0,0,.22); }
 .sequenceHeader,.sequenceStatus { display:flex; align-items:center; justify-content:space-between; text-transform:uppercase; font-size:7px; letter-spacing:.14em; color:rgba(255,255,255,.44); }
 .sequenceHeader span { display:flex; align-items:center; gap:8px; }
 .sequenceHeader span i { width:5px; height:5px; border-radius:50%; background:#67dde7; box-shadow:0 0 10px #67dde7; animation:statusBlink 1.8s ease-in-out infinite; }
-.sequenceHeader small { color:#67dde7; font-size:7px; }
+.sequenceHeader button { padding:0; border:0; color:#67dde7; background:transparent; font-size:7px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; }
+.sequenceHeader button:hover,.sequenceHeader button:focus-visible { color:#fff; outline:none; }
 .sequenceTrack { height:1px; margin:18px 0 5px; background:rgba(255,255,255,.11); overflow:hidden; }
-.sequenceProgress { display:block; width:28%; height:1px; background:linear-gradient(90deg,transparent,#67dde7,#fff); box-shadow:0 0 9px #67dde7; animation:sequenceTravel 8s linear infinite; }
-.sequenceStep { min-height:78px; display:grid; grid-template-columns:38px 1fr 8px; gap:14px; align-items:center; border-bottom:1px solid rgba(255,255,255,.09); color:rgba(255,255,255,.28); animation:sequenceActivate 8s ease-in-out infinite; }
+.sequenceProgress { display:block; height:1px; background:linear-gradient(90deg,var(--red),#67dde7,#fff); box-shadow:0 0 9px #67dde7; transition:width .6s cubic-bezier(.2,.8,.2,1); }
+.sequenceStep { width:100%; min-height:68px; padding:0; display:grid; grid-template-columns:38px 1fr 8px; gap:14px; align-items:center; text-align:left; border:0; border-bottom:1px solid rgba(255,255,255,.09); color:rgba(255,255,255,.42); background:transparent; cursor:pointer; transition:min-height .45s,background .4s,color .35s,padding .45s; position:relative; overflow:hidden; }
+.sequenceStep:before { content:""; position:absolute; left:0; top:0; bottom:0; width:1px; background:#67dde7; transform:scaleY(0); transition:transform .35s; box-shadow:0 0 10px #67dde7; }
 .sequenceStep > span { font-size:8px; letter-spacing:.12em; color:inherit; }
 .sequenceStep strong { display:block; text-transform:uppercase; font-size:16px; letter-spacing:.01em; color:inherit; transition:color .3s; }
-.sequenceStep p { margin:5px 0 0; max-height:0; opacity:0; overflow:hidden; font-size:8px; line-height:1.45; color:rgba(255,255,255,.48); transform:translateY(5px); animation:sequenceCopy 8s ease-in-out infinite; }
-.sequenceStep > i { width:6px; height:6px; border:1px solid currentColor; border-radius:50%; animation:sequenceDot 8s ease-in-out infinite; }
-.sequenceStep--2,.sequenceStep--2 p,.sequenceStep--2 > i { animation-delay:2s; }
-.sequenceStep--3,.sequenceStep--3 p,.sequenceStep--3 > i { animation-delay:4s; }
-.sequenceStep--4,.sequenceStep--4 p,.sequenceStep--4 > i { animation-delay:6s; }
+.sequenceStepCopy { display:block; }
+.sequenceStep small { display:block; max-height:0; opacity:0; overflow:hidden; margin-top:0; font-size:8px; line-height:1.45; color:rgba(255,255,255,.58); transform:translateY(5px); transition:max-height .4s,opacity .35s,transform .4s,margin .4s; }
+.sequenceStep > i { width:6px; height:6px; border:1px solid currentColor; border-radius:50%; transition:.35s; }
+.sequenceStep:hover,.sequenceStep:focus-visible { color:rgba(255,255,255,.72); outline:none; }
+.sequenceStep.isActive { min-height:90px; padding-left:12px; color:#fff; background:linear-gradient(90deg,rgba(103,221,231,.09),transparent); }
+.sequenceStep.isActive:before { transform:scaleY(1); }
+.sequenceStep.isActive > span { color:var(--red); }
+.sequenceStep.isActive small { max-height:28px; opacity:1; transform:translateY(0); margin-top:6px; }
+.sequenceStep.isActive > i { color:#67dde7; background:#67dde7; box-shadow:0 0 12px #67dde7; transform:scale(1.2); }
 .sequenceStatus { padding-top:16px; }
 .sequenceStatus span:last-child { color:rgba(255,255,255,.7); }
 @keyframes statusBlink { 50% { opacity:.28; } }
-@keyframes sequenceTravel { from { transform:translateX(-100%); } to { transform:translateX(360%); } }
-@keyframes sequenceActivate { 0%,23% { color:#fff; background:linear-gradient(90deg,rgba(103,221,231,.08),transparent); } 25%,100% { color:rgba(255,255,255,.28); background:transparent; } }
-@keyframes sequenceCopy { 0%,23% { max-height:30px; opacity:1; transform:translateY(0); } 25%,100% { max-height:0; opacity:0; transform:translateY(5px); } }
-@keyframes sequenceDot { 0%,23% { color:#67dde7; background:#67dde7; box-shadow:0 0 12px #67dde7; transform:scale(1.2); } 25%,100% { color:rgba(255,255,255,.3); background:transparent; box-shadow:none; transform:scale(1); } }
 .siteFooter { background:#050c0f; padding:70px clamp(28px,5.3vw,88px) 25px; display:grid; grid-template-columns:1.25fr .55fr 1fr; column-gap:clamp(45px,8vw,120px); border-top:1px solid rgba(255,255,255,.12); position:relative; }
 .siteFooter:before { content:""; position:absolute; left:clamp(28px,5.3vw,88px); right:clamp(28px,5.3vw,88px); top:0; height:1px; background:linear-gradient(90deg,var(--red) 0 55px,transparent 55px); }
 .footerBrand > a { display:block; width:158px; }
@@ -285,6 +288,7 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
   .countryAddress { max-height:42px; opacity:1; margin-top:5px; color:#697276; }
   .closing { padding:80px 20px 90px; gap:55px; }
   .closing h2 { font-size:clamp(48px,15vw,68px); }
+  .closing h2 span { white-space:normal; }
   .closingActions { align-items:flex-start; flex-direction:column; gap:25px; }
   .operationSequence { padding:18px 17px 16px; }
   .sequenceStep { grid-template-columns:30px 1fr 8px; gap:10px; min-height:72px; }
