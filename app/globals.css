@@ -16,8 +16,8 @@ button { font:inherit; }
 @keyframes waterDrift { to { transform:translateX(70px) translateY(5px); } }
 @keyframes particleRise { to { background-position:35px -95px,95px -60px,145px -160px; } }
 .siteHeader { height:86px; padding:0 clamp(28px,5.3vw,88px); display:flex; align-items:center; border-bottom:1px solid var(--line); position:relative; z-index:20; background:linear-gradient(180deg,rgba(2,10,14,.28),transparent); backdrop-filter:blur(2px); }
-.brand { display:flex; flex-direction:column; width:174px; font-size:22px; font-weight:700; letter-spacing:.04em; }
-.brand i { width:39px; height:2px; background:var(--red); margin-top:5px; }
+.brand { display:flex; align-items:center; width:174px; height:72px; }
+.brandLogo { width:148px; height:auto; display:block; object-fit:contain; }
 .desktopNav { margin-left:auto; display:flex; gap:clamp(20px,2.7vw,47px); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; }
 .desktopNav a { opacity:.72; transition:.3s; position:relative; padding:35px 0; }
 .desktopNav a:after { content:""; position:absolute; height:2px; left:0; right:100%; bottom:0; background:var(--red); transition:right .32s cubic-bezier(.2,.8,.2,1); }
@@ -125,7 +125,8 @@ h1 .muted { color:rgba(155,165,167,.47); }
 @media (max-width:620px) {
   .hero { min-height:820px; height:100svh; }
   .siteHeader { height:72px; padding:0 20px; }
-  .brand { width:auto; font-size:17px; }
+  .brand { width:auto; height:60px; }
+  .brandLogo { width:122px; }
   .mobileMenu button { width:46px; }
   .mobileMenu button span { display:none; }
   .heroImage { object-position:61% center; }

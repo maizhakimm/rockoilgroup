@@ -37,8 +37,14 @@ export default function Home() {
 
         <header className="siteHeader">
           <a className="brand" href="#home" aria-label="Rock Oil home">
-            <span>ROCK OIL</span>
-            <i />
+            <Image
+              src="/images/ROG-LOGO-800X360PX-WHITE.png"
+              alt="Rock Oil Group"
+              width={800}
+              height={360}
+              priority
+              className="brandLogo"
+            />
           </a>
           <SiteNav />
           <MobileMenu />
