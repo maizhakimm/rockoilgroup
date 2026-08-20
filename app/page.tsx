@@ -97,6 +97,14 @@ export default function Home() {
       </section>
 
       <section className="closing" id="contact">
+        <Image
+          src="/images/closing-pipeline.webp"
+          alt="Subsea pipeline carrying connected asset intelligence"
+          fill
+          sizes="100vw"
+          className="closingImage"
+        />
+        <div className="closingShade" aria-hidden="true" />
         <div className="closingGrid" aria-hidden="true" />
         <div className="closingGlow" aria-hidden="true" />
 
@@ -146,6 +154,42 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <footer className="siteFooter">
+        <div className="footerBrand">
+          <a href="#home" aria-label="Rock Oil home">
+            <Image
+              src="/images/ROG-LOGO-800X360PX-WHITE.png"
+              alt="Rock Oil Consulting Group"
+              width={800}
+              height={360}
+              className="footerLogo"
+            />
+          </a>
+          <p>Engineering integrity. Enabling better energy.</p>
+        </div>
+
+        <div className="footerNav">
+          <span>Navigate</span>
+          <a href="#home">Home</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#about">Our impact</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div className="footerContact">
+          <span>Start a conversation</span>
+          <a href="mailto:enquiries@rockoilgroup.com.my">
+            enquiries@rockoilgroup.com.my <ArrowDownRight size={17} />
+          </a>
+        </div>
+
+        <div className="footerBottom">
+          <span>© 2026 Rock Oil Consulting Sdn. Bhd.</span>
+          <span>All rights reserved.</span>
+          <a href="#home">Back to top ↑</a>
+        </div>
+      </footer>
     </main>
   );
 }
