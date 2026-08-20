@@ -135,13 +135,40 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .stat strong { display:block; font-size:39px; letter-spacing:-.05em; }
 .stat > span { display:block; margin-top:12px; text-transform:uppercase; font-size:11px; line-height:1.5; }
 .stat > span span { display:block; }
-.presence { position:relative; display:grid; grid-template-columns:1fr 130px; align-items:center; }
-.mapDots { position:absolute; inset:0 125px 0 0; opacity:.25; background-image:radial-gradient(#172126 1.2px,transparent 1.2px); background-size:7px 7px; mask-image:radial-gradient(ellipse,#000 10%,transparent 68%); }
-.locations { position:relative; z-index:1; margin-left:25%; display:flex; flex-direction:column; font-size:10px; text-transform:uppercase; }
-.locations span { font-size:8px; color:#5c6568; margin:3px 0 18px; }
-.presence > a { height:106px; border:1px solid rgba(7,16,20,.14); padding:18px; display:flex; flex-direction:column; justify-content:space-between; text-transform:uppercase; font-size:10px; transition:.3s; }
-.presence > a:hover { background:#091216; color:#fff; transform:translateY(-4px); }
-.presence > a svg { margin-left:auto; }
+.presence { position:relative; display:grid; grid-template-columns:minmax(280px,1fr) 150px; gap:18px; align-items:center; }
+.presenceMap { min-width:0; color:rgba(9,17,22,.32); position:relative; }
+.presenceMap svg { display:block; width:100%; height:175px; overflow:visible; }
+.mapLand path { fill:url(#mapDotPattern); stroke:rgba(9,17,22,.18); stroke-width:.7; }
+.mapLand .bruneiShape { fill:rgba(225,32,44,.12); stroke:rgba(225,32,44,.65); }
+.mapNetwork { fill:none; stroke:rgba(9,82,92,.26); stroke-width:.8; stroke-dasharray:3 6; }
+.mapDataPacket { fill:#e1202c; filter:drop-shadow(0 0 4px rgba(225,32,44,.65)); }
+.mapMarker text { fill:#202a2e; font-size:8px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; opacity:.62; }
+.markerPulse { fill:none; stroke:#e1202c; stroke-width:1; transform-origin:center; animation:mapPulse 4s ease-out infinite; }
+.markerCore { fill:#e1202c; }
+.markerSarawak .markerPulse { animation-delay:1s; }
+.markerBrunei .markerPulse { animation-delay:2s; }
+.markerSabah .markerPulse { animation-delay:3s; }
+@keyframes mapPulse { 0% { transform:scale(.35); opacity:0; } 18% { opacity:.9; } 58%,100% { transform:scale(1.35); opacity:0; } }
+.mapLegend { position:absolute; left:12px; right:5px; bottom:2px; display:flex; justify-content:space-between; color:rgba(9,17,22,.44); text-transform:uppercase; font-size:6px; letter-spacing:.12em; }
+.mapLegend span { display:flex; gap:6px; align-items:center; }
+.mapLegend i { width:5px; height:5px; border-radius:50%; background:#e1202c; }
+.mapLegend b { font-weight:500; }
+.presenceCard { height:156px; border:1px solid rgba(7,16,20,.16); padding:16px; display:flex; flex-direction:column; text-transform:uppercase; font-size:9px; position:relative; overflow:hidden; transition:color .4s,background .4s,transform .4s,border-color .4s; }
+.presenceCard:before { content:""; position:absolute; inset:0; background:linear-gradient(145deg,#0a1519,#0a292f); transform:translateY(102%); transition:transform .45s cubic-bezier(.2,.8,.2,1); z-index:-1; }
+.presenceCard strong { margin-top:14px; font-size:38px; line-height:.8; letter-spacing:-.06em; transition:color .35s,transform .4s; }
+.presenceCard small { margin-top:10px; color:#667074; font-size:6px; line-height:1.5; letter-spacing:.08em; transition:color .35s; }
+.presenceCard > i { display:flex; gap:4px; margin-top:auto; }
+.presenceCard > i b { width:5px; height:5px; border-radius:50%; background:rgba(9,17,22,.2); transition:.3s; }
+.presenceCard > svg { position:absolute; right:15px; bottom:15px; transition:transform .35s,color .35s; }
+.presenceCard:hover { color:#fff; transform:translateY(-5px); border-color:#0a292f; }
+.presenceCard:hover:before { transform:translateY(0); }
+.presenceCard:hover strong { color:#e1202c; transform:translateX(3px); }
+.presenceCard:hover small { color:rgba(255,255,255,.55); }
+.presenceCard:hover > i b { background:#e1202c; box-shadow:0 0 7px rgba(225,32,44,.45); }
+.presenceCard:hover > i b:nth-child(2) { transition-delay:.08s; }
+.presenceCard:hover > i b:nth-child(3) { transition-delay:.16s; }
+.presenceCard:hover > i b:nth-child(4) { transition-delay:.24s; }
+.presenceCard:hover > svg { transform:translate(4px,4px); }
 .closing { padding:100px clamp(28px,5.3vw,88px) 120px; background:#081216; }
 .closing h2 { text-transform:uppercase; font-size:clamp(48px,7vw,110px); line-height:.9; letter-spacing:-.06em; margin:20px 0 42px; }
 .light { margin-top:0; }
@@ -203,7 +230,8 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
   .stat:nth-child(2) { border-right:0; }
   .stat:nth-child(3) { padding-left:0; }
   .stat strong { font-size:34px; }
-  .locations { margin-left:10%; }
+  .presence { grid-template-columns:1fr; }
+  .presenceCard { height:135px; }
   .closing { padding:80px 20px 100px; }
 }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } .scanSignal,.scanPacket { display:none; } }

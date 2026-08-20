@@ -7,6 +7,7 @@ import { AnimationController } from "./components/animation-controller";
 import { SiteNav } from "./components/site-nav";
 import { CapabilitiesSection } from "./components/capabilities-section";
 import { HeroHotspots } from "./components/hero-hotspots";
+import { PresenceMap } from "./components/presence-map";
 
 const stats = [
   { value: "20+", label: "Years of\nexperience" },
@@ -91,9 +92,14 @@ export default function Home() {
           ))}
         </div>
         <div className="presence">
-          <div className="mapDots" aria-hidden="true" />
-          <div className="locations"><b>Malaysia</b><span>Kuala Lumpur · Miri · Kemaman</span><b>Brunei</b></div>
-          <a href="#contact">Our presence <ArrowDownRight size={18} /></a>
+          <PresenceMap />
+          <a className="presenceCard" href="#contact">
+            <span>Our presence</span>
+            <strong>04</strong>
+            <small>Strategic locations<br />Malaysia &amp; Brunei</small>
+            <i aria-hidden="true"><b /><b /><b /><b /></i>
+            <ArrowDownRight size={20} />
+          </a>
         </div>
       </section>
 
