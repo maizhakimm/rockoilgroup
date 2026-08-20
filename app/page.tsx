@@ -44,6 +44,11 @@ export default function Home() {
         />
         <div className="heroShade" />
         <div className="techGrid" aria-hidden="true" />
+        <div className="cinematicFx" aria-hidden="true">
+          <div className="sunsetGlow" />
+          <div className="waterShimmer" />
+          <div className="underwaterParticles" />
+        </div>
 
         <header className="siteHeader">
           <a className="brand" href="#home" aria-label="Rock Oil home">

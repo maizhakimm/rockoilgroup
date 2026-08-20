@@ -8,6 +8,13 @@ button { font:inherit; }
 .heroImage { object-fit:cover; object-position:center; z-index:-3; }
 .heroShade { position:absolute; inset:0; z-index:-2; background:linear-gradient(90deg,rgba(1,10,14,.96) 0%,rgba(1,10,14,.67) 33%,rgba(1,10,14,.08) 64%,rgba(1,10,14,.15)),linear-gradient(0deg,rgba(1,9,13,.45),transparent 50%); }
 .techGrid { position:absolute; inset:0; z-index:-1; opacity:.22; background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size:100% 92px,9vw 100%; mask-image:linear-gradient(to bottom,#000,transparent 75%); }
+.cinematicFx { position:absolute; inset:0; z-index:-1; pointer-events:none; overflow:hidden; }
+.sunsetGlow { position:absolute; width:36vw; height:24vw; min-width:420px; min-height:280px; left:52%; top:15%; border-radius:50%; background:radial-gradient(circle,rgba(255,177,94,.18),rgba(255,135,58,.055) 40%,transparent 70%); filter:blur(25px); animation:sunsetDrift 14s ease-in-out infinite alternate; mix-blend-mode:screen; }
+.waterShimmer { position:absolute; left:28%; right:-10%; top:43%; height:15%; opacity:.22; background:repeating-linear-gradient(174deg,transparent 0 14px,rgba(133,229,237,.13) 16px,transparent 19px 34px); filter:blur(5px); mask-image:linear-gradient(90deg,transparent,#000 30%,#000); animation:waterDrift 11s linear infinite; }
+.underwaterParticles { position:absolute; inset:45% 0 0 28%; opacity:.33; background-image:radial-gradient(circle,rgba(184,239,242,.8) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(184,239,242,.5) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(184,239,242,.35) 0 1px,transparent 1.5px); background-size:110px 95px,170px 140px,230px 190px; background-position:10px 20px,60px 80px,120px 30px; mask-image:linear-gradient(90deg,transparent,#000 22%); animation:particleRise 16s linear infinite; }
+@keyframes sunsetDrift { to { transform:translate(3vw,-1.3vw) scale(1.12); opacity:.72; } }
+@keyframes waterDrift { to { transform:translateX(70px) translateY(5px); } }
+@keyframes particleRise { to { background-position:35px -95px,95px -60px,145px -160px; } }
 .siteHeader { height:86px; padding:0 clamp(28px,5.3vw,88px); display:flex; align-items:center; border-bottom:1px solid var(--line); position:relative; z-index:20; background:linear-gradient(180deg,rgba(2,10,14,.28),transparent); backdrop-filter:blur(2px); }
 .brand { display:flex; flex-direction:column; width:174px; font-size:22px; font-weight:700; letter-spacing:.04em; }
 .brand i { width:39px; height:2px; background:var(--red); margin-top:5px; }
@@ -116,6 +123,9 @@ h1 .muted { color:rgba(155,165,167,.47); }
   .mobileMenu button span { display:none; }
   .heroImage { object-position:61% center; }
   .heroShade { background:linear-gradient(90deg,rgba(1,10,14,.92),rgba(1,10,14,.28)),linear-gradient(0deg,rgba(1,9,13,.7),transparent); }
+  .sunsetGlow { left:45%; top:18%; opacity:.55; }
+  .waterShimmer { left:10%; }
+  .underwaterParticles { left:18%; }
   .heroContent { margin:60px 20px 0; width:calc(100% - 40px); }
   .eyebrow { font-size:10px; }
   h1 { font-size:clamp(48px,16vw,72px); line-height:.88; }
