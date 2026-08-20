@@ -14,22 +14,26 @@ const services = [
 ];
 
 export function CapabilitiesSection() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState<number | null>(null);
+  const selected = services[active ?? 0];
   return (
     <section className="capabilities" id="capabilities">
       <div className="capabilityBackdrop" aria-hidden="true">CAPABILITIES</div>
       <div className="sectionLead">
-        <div><p className="eyebrow">What we do</p><span className="activeCounter">{services[active].index} / 06</span></div>
+        <div><p className="eyebrow">What we do</p><span className="activeCounter">{active === null ? "EXPLORE" : `${selected.index} / 06`}</span></div>
         <h2>Integrated solutions.<br />Measurable impact.</h2>
-        <p className="activeServiceCopy">{services[active].description}</p>
+        <p className="activeServiceCopy">{active === null ? "Hover a capability to explore how Rock Oil combines engineering, technology and people." : selected.description}</p>
         <a href="#contact">View all solutions <ArrowRight size={14} /></a>
       </div>
-      <div className="capabilityGrid" onMouseLeave={() => setActive(0)}>
-        {services.map(({ index, title, icon:Icon }, position) => (
+      <div className={`capabilityGrid ${active !== null ? "hasActive" : ""}`} onMouseLeave={() => setActive(null)}>
+        {services.map(({ index, title, description, icon:Icon }, position) => (
           <a id={`service-${index}`} href="#contact" className={`capabilityCard ${active === position ? "isActive" : ""}`} key={index} onMouseEnter={() => setActive(position)} onFocus={() => setActive(position)}>
+            <Icon className="blueprintIcon" aria-hidden="true" />
+            <span className="cardScan" aria-hidden="true" />
             <span className="cardIndex">{index}</span>
             <Icon className="serviceIcon" />
             <h3>{title}</h3>
+            <p className="cardDescription">{description}</p>
             <span className="cardExplore">Explore service</span>
             <ArrowDownRight className="cardArrow" size={18} weight="light" />
           </a>

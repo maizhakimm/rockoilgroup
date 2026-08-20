@@ -98,24 +98,35 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .sectionLead h2 { margin:15px 0 20px; font-size:29px; text-transform:uppercase; line-height:1.03; font-weight:500; letter-spacing:-.035em; }
 .activeServiceCopy { min-height:66px; margin:0 0 28px; color:rgba(255,255,255,.48); font-size:11px; line-height:1.6; max-width:275px; transition:opacity .25s; }
 .sectionLead a { font-size:10px; text-transform:uppercase; text-decoration:underline; display:flex; gap:12px; align-items:center; width:max-content; }
-.capabilityGrid { display:grid; grid-template-columns:repeat(6,1fr); position:relative; z-index:1; align-items:stretch; }
-.capabilityCard { border-left:1px solid var(--line); padding:36px 18px 34px; min-width:0; min-height:380px; display:flex; flex-direction:column; transition:background .36s,border-color .36s,opacity .36s; position:relative; overflow:hidden; isolation:isolate; }
+.capabilityGrid { display:flex; position:relative; z-index:1; align-items:stretch; }
+.capabilityCard { border-left:1px solid var(--line); padding:36px 18px 34px; min-width:0; min-height:380px; flex:1 1 0; display:flex; flex-direction:column; transition:flex .55s cubic-bezier(.2,.8,.2,1),background .4s,opacity .4s; position:relative; overflow:hidden; isolation:isolate; }
 .capabilityCard:before { content:""; position:absolute; top:0; left:0; right:100%; height:2px; background:var(--red); transition:right .38s cubic-bezier(.2,.8,.2,1); }
-.capabilityCard:after { content:""; position:absolute; width:190px; height:190px; right:-80px; bottom:-110px; border-radius:50%; background:rgba(0,118,136,.18); filter:blur(25px); opacity:0; transition:.4s; z-index:-1; }
-.capabilityGrid:hover .capabilityCard:not(:hover) { opacity:.7; }
-.capabilityCard:hover,.capabilityCard.isActive { background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,97,111,.1)); border-color:rgba(255,255,255,.28); opacity:1 !important; }
+.capabilityCard:after { content:""; position:absolute; width:260px; height:260px; right:-90px; bottom:-100px; border-radius:50%; background:rgba(0,158,178,.2); filter:blur(34px); opacity:0; transition:.5s; z-index:-1; }
+.capabilityGrid.hasActive .capabilityCard:not(.isActive) { opacity:.48; flex:.72 1 0; }
+.capabilityCard:hover,.capabilityCard.isActive { flex:2.05 1 0; background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(0,104,119,.2)); opacity:1 !important; }
 .capabilityCard:hover:before,.capabilityCard.isActive:before { right:0; }
 .capabilityCard:hover:after,.capabilityCard.isActive:after { opacity:1; }
-.cardIndex { color:rgba(255,255,255,.2); font-size:22px; font-weight:700; margin-bottom:32px; transition:.35s; }
-.capabilityCard svg { color:rgba(255,255,255,.78); margin-bottom:18px; transition:transform .35s,color .35s; }
+.cardIndex { color:rgba(255,255,255,.2); font-size:22px; font-weight:700; margin-bottom:32px; transition:font-size .45s,color .35s,transform .45s; position:relative; z-index:2; }
+.capabilityCard > .serviceIcon { color:rgba(255,255,255,.78); margin-bottom:18px; transition:transform .4s,color .35s,width .4s,height .4s; position:relative; z-index:2; }
 .capabilityCard:hover .cardIndex,.capabilityCard.isActive .cardIndex { color:var(--red); }
 .capabilityCard:hover > .serviceIcon,.capabilityCard.isActive > .serviceIcon { color:#fff; transform:translateY(-4px) scale(1.04); }
-.capabilityCard h3 { font-size:13px; line-height:1.25; text-transform:uppercase; margin:2px 0 0; font-weight:600; max-width:130px; }
+.capabilityCard h3 { font-size:13px; line-height:1.15; text-transform:uppercase; margin:2px 0 0; font-weight:600; max-width:165px; transition:font-size .45s,max-width .45s,transform .45s; position:relative; z-index:2; }
 .serviceIcon { width:50px; height:50px; }
-.cardExplore { margin-top:auto; padding-top:28px; font-size:8px; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.28); transition:.3s; }
+.cardDescription { max-height:0; opacity:0; overflow:hidden; transform:translateY(12px); margin:0; max-width:255px; color:rgba(255,255,255,.65); font-size:10px; line-height:1.55; transition:max-height .45s,opacity .35s,transform .45s,margin .45s; position:relative; z-index:2; }
+.cardExplore { margin-top:auto; padding-top:28px; font-size:8px; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.28); transition:.3s; position:relative; z-index:2; }
 .cardArrow { margin:13px 0 0 !important; flex:none; }
 .capabilityCard:hover .cardExplore,.capabilityCard.isActive .cardExplore { color:rgba(255,255,255,.7); }
 .capabilityCard:hover .cardArrow,.capabilityCard.isActive .cardArrow { transform:translate(5px,3px); color:var(--red); }
+.capabilityCard.isActive .cardIndex { font-size:52px; line-height:.85; transform:translateX(-3px); color:rgba(225,32,44,.85); }
+.capabilityCard.isActive > .serviceIcon { width:58px; height:58px; transform:translateY(-2px) scale(1.04); }
+.capabilityCard.isActive h3 { font-size:22px; max-width:235px; transform:translateY(-2px); }
+.capabilityCard.isActive .cardDescription { max-height:75px; opacity:1; transform:translateY(0); margin-top:14px; }
+.blueprintIcon { position:absolute; width:270px; height:270px; right:-80px; bottom:-50px; color:#69dce5; opacity:0; transform:rotate(-8deg) scale(.75); transition:opacity .5s,transform .7s cubic-bezier(.2,.8,.2,1); z-index:-1; }
+.capabilityCard.isActive .blueprintIcon { opacity:.11; transform:rotate(0) scale(1); }
+.capabilityCard.isActive:before { right:0; box-shadow:0 0 18px rgba(225,32,44,.5); }
+.cardScan { position:absolute; z-index:1; left:0; right:0; height:1px; top:-5%; opacity:0; background:linear-gradient(90deg,transparent,rgba(103,221,231,.9),transparent); box-shadow:0 0 12px rgba(103,221,231,.55); }
+.capabilityCard.isActive .cardScan { opacity:.7; animation:cardScan 2.8s linear infinite; }
+@keyframes cardScan { from { top:0; } to { top:100%; } }
 .impact { background:var(--paper); color:#091116; min-height:305px; padding:56px clamp(28px,5.3vw,88px); display:grid; grid-template-columns:45px 1.25fr 1fr; gap:35px; position:relative; }
 .verticalLabel { border-right:1px solid rgba(7,16,20,.15); padding-right:20px; }
 .statsGrid { display:grid; grid-template-columns:repeat(4,1fr); align-items:center; }
@@ -137,8 +148,11 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 @media (max-width:1200px) {
   .desktopNav { gap:20px; }
   .capabilities { grid-template-columns:300px 1fr; }
-  .capabilityGrid { grid-template-columns:repeat(3,1fr); }
+  .capabilityGrid { display:grid; grid-template-columns:repeat(3,1fr); }
   .capabilityCard { min-height:290px; }
+  .capabilityGrid.hasActive .capabilityCard:not(.isActive),.capabilityCard:hover,.capabilityCard.isActive { opacity:1; }
+  .capabilityCard.isActive .cardIndex { font-size:34px; }
+  .capabilityCard.isActive h3 { font-size:17px; }
   .impact { grid-template-columns:45px 1fr; }
   .presence { grid-column:2; min-height:180px; }
 }
