@@ -7,7 +7,6 @@ import { AnimationController } from "./components/animation-controller";
 import { SiteNav } from "./components/site-nav";
 import { CapabilitiesSection } from "./components/capabilities-section";
 import { HeroHotspots } from "./components/hero-hotspots";
-import { HeroHud } from "./components/hero-hud";
 
 const stats = [
   { value: "20+", label: "Years of\nexperience" },
@@ -75,7 +74,6 @@ export default function Home() {
         <div className="depthScale" aria-hidden="true">
           <span>00</span><span>20</span><span>40</span><span>60</span><span>80</span>
         </div>
-        <HeroHud />
         <HeroHotspots />
         <div className="scrollCue"><span>Scroll</span><i /></div>
       </section>

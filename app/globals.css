@@ -45,27 +45,13 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .outlineButton:hover svg { transform:translate(4px,4px); }
 .depthScale { position:absolute; right:28px; top:50%; display:flex; flex-direction:column; gap:43px; color:rgba(255,255,255,.32); font-size:9px; }
 .depthScale span:before { content:""; width:16px; height:1px; background:rgba(255,255,255,.22); position:absolute; right:25px; margin-top:6px; }
-.heroHud { position:absolute; z-index:11; top:118px; left:56.5%; width:240px; padding:12px 13px 11px; color:#fff; border-left:1px solid rgba(225,32,44,.65); border-right:1px solid rgba(255,255,255,.1); background:linear-gradient(90deg,rgba(4,18,23,.38),rgba(4,18,23,.08)); opacity:.48; transition:opacity .35s,background .35s; overflow:hidden; }
-.heroHud:hover { opacity:.88; background:linear-gradient(90deg,rgba(4,18,23,.74),rgba(4,18,23,.25)); }
-.hudHeader { display:flex; align-items:center; justify-content:space-between; gap:14px; font-size:7px; letter-spacing:.13em; text-transform:uppercase; }
-.hudHeader span { display:flex; align-items:center; gap:7px; color:rgba(255,255,255,.7); }
-.hudHeader i { width:5px; height:5px; border-radius:50%; background:#67dde7; box-shadow:0 0 9px rgba(103,221,231,.8); animation:hudStatus 2.4s ease-in-out infinite; }
-.hudHeader b { color:rgba(255,255,255,.38); font-size:6px; font-weight:500; }
-@keyframes hudStatus { 50% { opacity:.35; box-shadow:0 0 3px rgba(103,221,231,.3); } }
-.hudWave { width:100%; height:54px; display:block; margin:6px 0 4px; overflow:visible; }
-.hudGridLine { fill:none; stroke:rgba(255,255,255,.07); stroke-width:.6; }
-.hudSignalGlow,.hudSignal { fill:none; vector-effect:non-scaling-stroke; }
-.hudSignalGlow { stroke:rgba(103,221,231,.28); stroke-width:5; filter:blur(3px); }
-.hudSignal { stroke:#7bdce3; stroke-width:1; stroke-dasharray:300; stroke-dashoffset:300; animation:hudTrace 7s linear infinite; }
-@keyframes hudTrace { 0% { stroke-dashoffset:300; opacity:.2; } 18%,82% { opacity:1; } 100% { stroke-dashoffset:-300; opacity:.2; } }
-.hudReadout { display:grid; grid-template-columns:1.4fr 1fr .45fr; gap:12px; text-transform:uppercase; font-size:7px; letter-spacing:.08em; }
-.hudReadout span { border-top:1px solid rgba(255,255,255,.12); padding-top:6px; white-space:nowrap; }
-.hudReadout small { display:block; margin-bottom:3px; color:rgba(255,255,255,.3); font-size:5px; }
-.hudSweep { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
-.hudSweep i { position:absolute; top:0; bottom:0; width:35%; background:linear-gradient(90deg,transparent,rgba(103,221,231,.055),transparent); transform:translateX(-120%); animation:hudSweep 8s ease-in-out infinite; }
-@keyframes hudSweep { 0%,55% { transform:translateX(-120%); } 90%,100% { transform:translateX(390%); } }
 .heroHotspots { position:absolute; inset:0; z-index:12; pointer-events:none; opacity:0; transition:opacity .35s; }
 .heroHotspots.isReady { opacity:1; }
+.heroScanNetwork { position:absolute; inset:0; pointer-events:none; overflow:visible; }
+.scanRoute,.scanSignal { fill:none; vector-effect:non-scaling-stroke; }
+.scanRoute { stroke:rgba(103,221,231,.1); stroke-width:.7; stroke-dasharray:2 8; }
+.scanSignal { stroke:url(#scanGradient); stroke:#74d9e1; stroke-width:1.2; stroke-linecap:round; stroke-dasharray:18 900; animation:scanTravel 8.4s linear infinite; filter:drop-shadow(0 0 4px rgba(103,221,231,.75)); }
+@keyframes scanTravel { from { stroke-dashoffset:0; } to { stroke-dashoffset:-918; } }
 .heroHotspot { position:absolute; width:34px; height:34px; pointer-events:auto; transform:translate(-50%,-50%); }
 .hotspotTarget { width:34px; height:34px; padding:0; display:grid; place-items:center; color:#fff; border:1px solid rgba(255,255,255,.68); border-radius:50%; background:rgba(3,16,21,.34); backdrop-filter:blur(4px); cursor:pointer; position:relative; transition:background .3s,border-color .3s,transform .3s; }
 .hotspotTarget:before,.hotspotTarget:after { content:""; position:absolute; inset:-8px; border:1px solid rgba(225,32,44,.65); border-radius:50%; animation:hotspotPulse 2.8s ease-out infinite; }
@@ -73,12 +59,17 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .heroHotspot--pipeline .hotspotTarget:before,.heroHotspot--pipeline .hotspotTarget:after { animation-delay:.35s; }
 .heroHotspot--rov .hotspotTarget:before,.heroHotspot--rov .hotspotTarget:after { animation-delay:.7s; }
 .heroHotspot.isActive .hotspotTarget { color:var(--red); background:rgba(3,16,21,.88); border-color:var(--red); transform:scale(1.08); }
+.heroHotspot.isAuto .hotspotTarget { box-shadow:0 0 0 8px rgba(225,32,44,.06),0 0 26px rgba(103,221,231,.22); }
 @keyframes hotspotPulse { 0% { transform:scale(.72); opacity:0; } 28% { opacity:.85; } 100% { transform:scale(1.2); opacity:0; } }
 .hotspotAnnotation { position:absolute; left:50px; top:50%; width:224px; padding:15px 16px 14px; border:1px solid rgba(255,255,255,.24); background:linear-gradient(135deg,rgba(5,18,23,.96),rgba(5,30,36,.88)); backdrop-filter:blur(10px); opacity:0; visibility:hidden; transform:translate(10px,-50%); transition:opacity .28s,transform .32s,visibility .28s; box-shadow:0 18px 50px rgba(0,0,0,.28); }
 .hotspotAnnotation:before { content:""; position:absolute; right:100%; top:50%; width:50px; height:1px; background:linear-gradient(90deg,var(--red),rgba(255,255,255,.55)); }
 .heroHotspot--platform .hotspotAnnotation { left:auto; right:50px; transform:translate(-10px,-50%); }
 .heroHotspot--platform .hotspotAnnotation:before { left:100%; right:auto; background:linear-gradient(90deg,rgba(255,255,255,.55),var(--red)); }
-.heroHotspot.isActive .hotspotAnnotation { opacity:1; visibility:visible; transform:translate(0,-50%); }
+.heroHotspot.isManual .hotspotAnnotation { opacity:1; visibility:visible; transform:translate(0,-50%); }
+.hotspotMicroLabel { position:absolute; left:46px; top:50%; transform:translate(8px,-50%); white-space:nowrap; color:rgba(255,255,255,.62); font-size:7px; letter-spacing:.12em; text-transform:uppercase; opacity:0; transition:opacity .3s,transform .35s; }
+.hotspotMicroLabel b { color:var(--red); margin-right:7px; font-weight:500; }
+.heroHotspot--platform .hotspotMicroLabel,.heroHotspot--rov .hotspotMicroLabel { left:auto; right:46px; transform:translate(-8px,-50%); }
+.heroHotspot.isAuto .hotspotMicroLabel { opacity:1; transform:translate(0,-50%); }
 .hotspotMeta { color:rgba(255,255,255,.48); font-size:8px; letter-spacing:.12em; text-transform:uppercase; display:flex; justify-content:space-between; }
 .hotspotMeta span { color:var(--red); }
 .hotspotAnnotation strong { display:block; margin-top:9px; font-size:12px; text-transform:uppercase; letter-spacing:.02em; }
@@ -149,7 +140,6 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
   .capabilityCard { min-height:290px; }
   .impact { grid-template-columns:45px 1fr; }
   .presence { grid-column:2; min-height:180px; }
-  .heroHud { left:51%; width:210px; }
 }
 @media (max-width:900px) {
   .desktopNav { display:none; }
@@ -158,7 +148,6 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
   .mobilePanel.isOpen { display:flex; }
   .mobilePanel a { padding:13px 10px; text-transform:uppercase; font-size:11px; border-bottom:1px solid rgba(255,255,255,.08); }
   .heroContent { width:70vw; }
-  .heroHud { display:none; }
   .rovLabel { display:none; }
   .hotspotAnnotation { width:200px; }
   .capabilities { grid-template-columns:1fr; padding-left:28px; }
@@ -202,4 +191,4 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
   .locations { margin-left:10%; }
   .closing { padding:80px 20px 100px; }
 }
-@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } .hudSignal { stroke-dashoffset:0; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } .scanSignal { display:none; } }

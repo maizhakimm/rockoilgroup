@@ -34,7 +34,8 @@ const hotspots = [
 ];
 
 export function HeroHotspots() {
-  const [active, setActive] = useState<string | null>(null);
+  const [manualActive, setManualActive] = useState<string | null>(null);
+  const [autoIndex, setAutoIndex] = useState(0);
   const [positions, setPositions] = useState<Array<{ left: number; top: number }>>([]);
   const layerRef = useRef<HTMLDivElement>(null);
 
@@ -63,30 +64,53 @@ export function HeroHotspots() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (manualActive) return;
+    const timer = window.setInterval(() => {
+      setAutoIndex((current) => (current + 1) % hotspots.length);
+    }, 2800);
+    return () => window.clearInterval(timer);
+  }, [manualActive]);
+
+  const scanOrder = positions.length === hotspots.length
+    ? [positions[0], positions[2], positions[1]]
+    : [];
+  const scanPath = scanOrder.length
+    ? `M ${scanOrder[0].left} ${scanOrder[0].top} L ${scanOrder[1].left} ${scanOrder[1].top} L ${scanOrder[2].left} ${scanOrder[2].top}`
+    : "";
+
   return (
     <div ref={layerRef} className={`heroHotspots ${positions.length ? "isReady" : ""}`} aria-label="Explore technology in the scene">
+      {scanPath && (
+        <svg className="heroScanNetwork" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
+          <path className="scanRoute" d={scanPath} />
+          <path className="scanSignal" d={scanPath} />
+        </svg>
+      )}
       {hotspots.map((hotspot, position) => {
-        const isActive = active === hotspot.id;
+        const isManual = manualActive === hotspot.id;
+        const isAuto = !manualActive && autoIndex === position;
         return (
           <div
-            className={`heroHotspot heroHotspot--${hotspot.id} ${isActive ? "isActive" : ""}`}
+            className={`heroHotspot heroHotspot--${hotspot.id} ${isManual || isAuto ? "isActive" : ""} ${isManual ? "isManual" : ""} ${isAuto ? "isAuto" : ""}`}
             key={hotspot.id}
             style={positions[position]}
-            onMouseEnter={() => setActive(hotspot.id)}
-            onMouseLeave={() => setActive(null)}
+            onMouseEnter={() => setManualActive(hotspot.id)}
+            onMouseLeave={() => setManualActive(null)}
           >
             <button
               className="hotspotTarget"
               type="button"
-              aria-expanded={isActive}
+              aria-expanded={isManual}
               aria-controls={`hotspot-${hotspot.id}`}
               aria-label={`View ${hotspot.capability} information`}
-              onClick={() => setActive(isActive ? null : hotspot.id)}
-              onFocus={() => setActive(hotspot.id)}
+              onClick={() => setManualActive(isManual ? null : hotspot.id)}
+              onFocus={() => setManualActive(hotspot.id)}
             >
               <Crosshair size={17} weight="light" />
             </button>
-            <div className="hotspotAnnotation" id={`hotspot-${hotspot.id}`} aria-hidden={!isActive}>
+            <span className="hotspotMicroLabel"><b>{hotspot.number}</b>{hotspot.label}</span>
+            <div className="hotspotAnnotation" id={`hotspot-${hotspot.id}`} aria-hidden={!isManual}>
               <div className="hotspotMeta"><span>{hotspot.number}</span>{hotspot.label}</div>
               <strong>{hotspot.capability}</strong>
               <p>{hotspot.detail}</p>
