@@ -49,9 +49,10 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
 .heroHotspots.isReady { opacity:1; }
 .heroScanNetwork { position:absolute; inset:0; pointer-events:none; overflow:visible; }
 .scanRoute,.scanSignal { fill:none; vector-effect:non-scaling-stroke; }
-.scanRoute { stroke:rgba(103,221,231,.1); stroke-width:.7; stroke-dasharray:2 8; }
-.scanSignal { stroke:url(#scanGradient); stroke:#74d9e1; stroke-width:1.2; stroke-linecap:round; stroke-dasharray:18 900; animation:scanTravel 8.4s linear infinite; filter:drop-shadow(0 0 4px rgba(103,221,231,.75)); }
-@keyframes scanTravel { from { stroke-dashoffset:0; } to { stroke-dashoffset:-918; } }
+.scanRoute { stroke:rgba(103,221,231,.25); stroke-width:.85; stroke-dasharray:3 7; filter:drop-shadow(0 0 2px rgba(103,221,231,.18)); }
+.scanSignal { stroke:#83e6ed; stroke-width:1.5; stroke-linecap:round; stroke-dasharray:24 1400; animation:scanTravel 8.4s linear infinite; filter:drop-shadow(0 0 5px rgba(103,221,231,.9)); }
+.scanPacket { fill:#a8f8ff; filter:drop-shadow(0 0 3px #73e4ec) drop-shadow(0 0 8px rgba(103,221,231,.95)); }
+@keyframes scanTravel { from { stroke-dashoffset:0; } to { stroke-dashoffset:-1424; } }
 .heroHotspot { position:absolute; width:34px; height:34px; pointer-events:auto; transform:translate(-50%,-50%); }
 .hotspotTarget { width:34px; height:34px; padding:0; display:grid; place-items:center; color:#fff; border:1px solid rgba(255,255,255,.68); border-radius:50%; background:rgba(3,16,21,.34); backdrop-filter:blur(4px); cursor:pointer; position:relative; transition:background .3s,border-color .3s,transform .3s; }
 .hotspotTarget:before,.hotspotTarget:after { content:""; position:absolute; inset:-8px; border:1px solid rgba(225,32,44,.65); border-radius:50%; animation:hotspotPulse 2.8s ease-out infinite; }
@@ -191,4 +192,4 @@ h1 .muted > span { color:transparent; background:linear-gradient(100deg,#505a5e 
   .locations { margin-left:10%; }
   .closing { padding:80px 20px 100px; }
 }
-@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } .scanSignal { display:none; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } .scanSignal,.scanPacket { display:none; } }

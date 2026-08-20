@@ -33,9 +33,11 @@ const hotspots = [
   },
 ];
 
+const scanSequence = [0, 2, 1];
+
 export function HeroHotspots() {
   const [manualActive, setManualActive] = useState<string | null>(null);
-  const [autoIndex, setAutoIndex] = useState(0);
+  const [autoStep, setAutoStep] = useState(0);
   const [positions, setPositions] = useState<Array<{ left: number; top: number }>>([]);
   const layerRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +69,7 @@ export function HeroHotspots() {
   useEffect(() => {
     if (manualActive) return;
     const timer = window.setInterval(() => {
-      setAutoIndex((current) => (current + 1) % hotspots.length);
+      setAutoStep((current) => (current + 1) % scanSequence.length);
     }, 2800);
     return () => window.clearInterval(timer);
   }, [manualActive]);
@@ -76,7 +78,7 @@ export function HeroHotspots() {
     ? [positions[0], positions[2], positions[1]]
     : [];
   const scanPath = scanOrder.length
-    ? `M ${scanOrder[0].left} ${scanOrder[0].top} L ${scanOrder[1].left} ${scanOrder[1].top} L ${scanOrder[2].left} ${scanOrder[2].top}`
+    ? `M ${scanOrder[0].left} ${scanOrder[0].top} L ${scanOrder[1].left} ${scanOrder[1].top} L ${scanOrder[2].left} ${scanOrder[2].top} Z`
     : "";
 
   return (
@@ -85,11 +87,14 @@ export function HeroHotspots() {
         <svg className="heroScanNetwork" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
           <path className="scanRoute" d={scanPath} />
           <path className="scanSignal" d={scanPath} />
+          <circle className="scanPacket" r="2.7">
+            <animateMotion dur="8.4s" repeatCount="indefinite" path={scanPath} />
+          </circle>
         </svg>
       )}
       {hotspots.map((hotspot, position) => {
         const isManual = manualActive === hotspot.id;
-        const isAuto = !manualActive && autoIndex === position;
+        const isAuto = !manualActive && scanSequence[autoStep] === position;
         return (
           <div
             className={`heroHotspot heroHotspot--${hotspot.id} ${isManual || isAuto ? "isActive" : ""} ${isManual ? "isManual" : ""} ${isAuto ? "isAuto" : ""}`}

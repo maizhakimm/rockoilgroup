@@ -57,7 +57,7 @@ export default function Home() {
             <span className="heroTitleLine"><span>Beyond</span></span>
             <span className="heroTitleLine"><span>Engineering.</span></span>
             <span className="heroTitleLine muted"><span>Better</span></span>
-            <span className="heroTitleLine muted"><span>Energy</span></span>
+            <span className="heroTitleLine muted"><span>Energy.</span></span>
           </h1>
           <div className="introBlock">
             <i />
