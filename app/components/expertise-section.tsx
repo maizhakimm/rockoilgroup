@@ -28,10 +28,12 @@ export function ExpertiseSection() {
       const travel = Math.max(1, stack.offsetHeight - stage.offsetHeight);
       const stickyTop = parseFloat(getComputedStyle(stage).top) || 0;
       const progress = Math.min(expertise.length - 1, Math.max(0, (stickyTop - rect.top) / travel * (expertise.length - 1)));
+      const activeIndex = Math.min(expertise.length - 1, Math.max(0, Math.round(progress)));
       cardRefs.current.forEach((card, index) => {
         if (!card) return;
         const raw = index === 0 ? 1 : Math.min(1, Math.max(0, progress - (index - 1)));
         card.style.setProperty("--expertise-enter", String(1 - Math.pow(1 - raw, 3)));
+        card.dataset.railState = index === activeIndex ? "active" : index < activeIndex ? "passed" : "upcoming";
       });
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
